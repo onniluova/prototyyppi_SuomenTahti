@@ -9,6 +9,10 @@ class rahat:
     def tarkistaRahatilanne(self, raha):
         if self.rahaMaara >= raha:
             print(self.rahaMaara)
-class polttoaine
+class polttoaine:
+    def __init__(self, polttoaineMaara = 100):
+        self.polttoaineMaara = polttoaineMaara
+
+
     #Polttaine litroissa asetus, 100 on maksimi ja tankki on täynnä alussa
     #Tankkaus funktio, tankkaamisesta tulee maksaa sitten, kun et voi liikkua enää mihinkään. Tankkaaminen maksaa 100 euroa.
