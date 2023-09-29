@@ -6,3 +6,23 @@
     #• Nopan luku viisi. Sää on liian huono. Et pysty lentämään ja olet hotellissa yötä. Maksat 100 euroa hotellista.
     #• Nopan luku 6-11: Ei tapahdu mitään.
     #• Nopan luku 12: Löydät paikallisen Tokmannin. Saat sieltä ämpärin. Ämpäri lisää ilmastopisteitä 100 pisteellä.
+
+import random
+def sattuma(noppa):
+
+    if noppa == 1:
+        print("Lentokoneessa on vikaa. Se täytyy korjata")
+    elif noppa ==2:
+        raha_lista=[100,200,300]
+        raha_maara = random.randint(0,2)
+
+        print(f"Löysit {raha_lista[raha_maara]}€")
+
+
+
+    return
+
+
+noppa = random.randint(1,12)
+
+print(sattuma(noppa))

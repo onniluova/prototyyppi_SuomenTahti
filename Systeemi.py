@@ -1,4 +1,4 @@
-import math
+ import math
 class pisteet:
     def __init__(self, ilmastopisteet = 1000):
         self.ilmastopisteet = ilmastopisteet
