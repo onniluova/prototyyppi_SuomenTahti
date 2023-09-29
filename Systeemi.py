@@ -17,21 +17,13 @@ class polttoaine:
         self.polttoaineMaara = polttoaineMaara
     #Polttaine litroissa asetus, 100 on maksimi ja tankki on täynnä alussa
     #Tankkaus funktio, tankkaamisesta tulee maksaa sitten, kun et voi liikkua enää mihinkään. Tankkaaminen maksaa 100 euroa.
-
-class tankkaus:
-    def tankki_tayteen(self, rahat, polttoaine):
+    def tankki_tayteen(self, rahat, polttoaineMaara):
         if rahat >= 100:
-            polttoaine = 100
+            polttoaineMaara = 100
             rahat -= 100
         else:
             print("Rahat ei riitä tankin täyttämiseen. ")
-
-        return rahat, polttoaine
-
-rahat = 500
-polttoaine = 0
-
-rahat, polttoaine = tankki_tayteen(rahat, polttoaine)
+        return rahat, polttoaineMaara
 
 print("Rahaa jäljellä:", rahat)
 print("Polttoainetta tankissa:", polttoaine)
