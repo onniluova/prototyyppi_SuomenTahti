@@ -1,6 +1,5 @@
 import Systeemi
 
-sys = Systeemi.rahat()
+rahaSys = Systeemi.rahat()
 
-while
-    sys.tarkistaRahatilanne(50)
+rahaSys.tarkistaRahatilanne(50)
