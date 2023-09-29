@@ -1,4 +1,4 @@
- import math
+import math
 class pisteet:
     def __init__(self, ilmastopisteet = 1000):
         self.ilmastopisteet = ilmastopisteet
@@ -18,12 +18,12 @@ class polttoaine:
     #Polttaine litroissa asetus, 100 on maksimi ja tankki on täynnä alussa
     #Tankkaus funktio, tankkaamisesta tulee maksaa sitten, kun et voi liikkua enää mihinkään. Tankkaaminen maksaa 100 euroa.
     def tankki_tayteen(self, rahat, polttoaineMaara):
-        if rahat >= 100:
+        if rahat.rahaMaara >= 100:
+            rahat.rahaMaara -= polttoaineMaara
             polttoaineMaara = 100
-            rahat -= 100
         else:
             print("Rahat ei riitä tankin täyttämiseen. ")
-        return rahat, polttoaineMaara
+        return rahat.rahaMaara, polttoaineMaara
 
 print("Rahaa jäljellä:", rahat)
 print("Polttoainetta tankissa:", polttoaine)
