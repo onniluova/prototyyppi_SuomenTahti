@@ -12,3 +12,4 @@ print("Hei, " + pelaajanNimi)
 
 
 print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50)))
+

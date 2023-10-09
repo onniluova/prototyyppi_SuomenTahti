@@ -25,8 +25,9 @@ class polttoaine:
             print("Rahat ei riitä tankin täyttämiseen. ")
         return rahat.rahaMaara, polttoaineMaara
 
-print("Rahaa jäljellä:", rahat)
-print("Polttoainetta tankissa:", polttoaine)
+def poltraha():
+    print("Rahaa jäljellä:", rahat)
+    print("Polttoainetta tankissa:", polttoaine)
 class sijainti:
     def __init__(self, koordinaatit):
         self.koordinaatit = koordinaatit
