@@ -9,7 +9,7 @@ class rahat:
         self.rahaMaara = rahaMaara
     def tarkistaRahatilanne(self, raha):
         if self.rahaMaara >= raha:
-            print(self.rahaMaara)
+            return(self.rahaMaara)
     #Rahojen vähentäminen
     #Rahojan saaminen
 class polttoaine:
