@@ -9,7 +9,6 @@ satnnuinen = satunnaisetTapahtumat.Heitto()
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
-
 print(sattuma(noppa))
 
 print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50)))
