@@ -12,4 +12,4 @@ print("Hei, " + pelaajanNimi)
 
 while True:
     print("Valitse määränpää") #Kolme vaihtoehtoa
-    print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50)))
+    print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50))) #
