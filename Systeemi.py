@@ -24,14 +24,14 @@ class polttoaine:
         else:
             print("Rahat ei riitä tankin täyttämiseen. ")
         return rahat.rahaMaara, polttoaineMaara
-    def poltraha():
-        print("Rahaa jäljellä:", rahat)
-        print("Polttoainetta tankissa:", polttoaine)
+def poltraha():
+    print("Rahaa jäljellä:", rahat)
+    print("Polttoainetta tankissa:", polttoaine)
 
-    def polttoaineen_Kulutus(self, sää):
-        if sää == "hyvä":
+    def polttoaineen_Kulutus(self, saa):
+        if saa == "hyvä":
             return self.polttoaineMaara * 0.85
-        elif sää == "huono":
+        elif saa == "huono":
             return self.polttoaineMaara * 1.15
         else:
             return self.polttoaineMaara
