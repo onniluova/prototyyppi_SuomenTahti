@@ -11,5 +11,5 @@ print("Hei, " + pelaajanNimi)
 
 
 print(sattuma(noppa))
-
+##
 print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50)))
