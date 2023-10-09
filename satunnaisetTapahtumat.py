@@ -14,6 +14,8 @@
     # Paikkakunnat : select municipality from airport, country
     # where airport.iso_country = country.iso_country and country.name = "Finland"
 
+
+
 import random
 def sattuma(noppa):
 
@@ -32,7 +34,7 @@ def sattuma(noppa):
         print("Sinut ryöstettiin. Menetit 100€")
 
     elif noppa == 5:
-        print("Sää on liian huono lentämiseen. Joudut yöpymään hotellissa. -100€")
+        print("Lentokoneessa on vikaa. Korjaus maksaa: -100€")
 
     elif noppa in range(6,11):
         print("Ei tapahdu mitään")

@@ -8,4 +8,8 @@ rahaSys = Systeemi.rahat()
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
-print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50)))
+#Selostus pelin juonesta
+
+while True:
+    print("Valitse määränpää") #Kolme vaihtoehtoa
+    print("Rahasi: " + str(rahaSys.tarkistaRahatilanne(50)))
