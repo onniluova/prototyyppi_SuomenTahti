@@ -9,7 +9,7 @@ class rahat:
         self.rahaMaara = rahaMaara
     def tarkistaRahatilanne(self, raha):
         if self.rahaMaara >= raha:
-            print(self.rahaMaara)
+            return(self.rahaMaara)
     #Rahojen vähentäminen
     #Rahojan saaminen
 class polttoaine:
@@ -24,17 +24,17 @@ class polttoaine:
         else:
             print("Rahat ei riitä tankin täyttämiseen. ")
         return rahat.rahaMaara, polttoaineMaara
+def poltraha():
+    print("Rahaa jäljellä:", rahat)
+    print("Polttoainetta tankissa:", polttoaine)
 
-print("Rahaa jäljellä:", rahat)
-print("Polttoainetta tankissa:", polttoaine)
-
-    def polttoaineen_Kulutus(self, sää):
-        if sää == "hyvä":
-            return self.polttoaineMaara * 0.85
-        elif sää == "huono":
-            return self.polttoaineMaara * 1.15
-        else:
-            return self.polttoaineMaara
+def polttoaineen_Kulutus(self, sää):
+    if sää == "hyvä":
+        return self.polttoaineMaara * 0.85
+    elif sää == "huono":
+        return self.polttoaineMaara * 1.15
+    else:
+        return self.polttoaineMaara
 
 print(polttoaineen_Kulutus("hyvä"))
 print(polttoaineen_Kulutus("huono"))
