@@ -21,5 +21,5 @@ yhteys = mysql.connector.connect(
     password = 'Nasslingmaga98',
     autocommit = True
 )
-
+sijainti = "EFHK"
 kohteet()
