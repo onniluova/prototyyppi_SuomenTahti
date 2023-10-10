@@ -1,4 +1,6 @@
 #Peli alkaa tästä. Pelilooppiin siirrytään kun pelaaja on valmis pelaamaan.
+import random
+
 peliLoppu = 0
 rahat = 500
 polttoaine = 100
@@ -19,6 +21,35 @@ while peliLoppu == 0:
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         #Polttoaineen kulutus sään ja sijainnin etäisyyden mukaan.
         print("Kohteesi: " + sijainti)
+        noppa = random.randint(1, 12)
+
+        if noppa == 1:
+            print("Lentokoneessa on vikaa. Korjaus maksaa: -100€")
+            rahat -= 100
+
+        elif noppa ==2:
+            raha_lista=[100,200,300]
+            raha_maara = random.randint(0,2)
+            rahat += raha_maara
+            print(f"Löysit {raha_lista[raha_maara]}€ Rahamäärä: {rahat}")
+
+        elif noppa ==3:
+            print("Myötätuuli")
+
+        elif noppa == 4:
+            print("Sinut ryöstettiin. Menetit 100€")
+            rahat -= 100
+
+        elif noppa == 5:
+            print("Lentokoneessa on vikaa. Korjaus maksaa: -100€")
+            rahat -= 100
+            print("Rahamäärä: " + str(rahat))
+
+        elif noppa in range(6,11):
+            print("Ei tapahdu mitään")
+
+        elif noppa == 12:
+            print("ÄMPÄRIARVONTA!!")
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
