@@ -70,6 +70,12 @@ while peliLoppu == 0:
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
+        if rahat <= 100 - polttoaine:
+            rahat -= 100 - polttoaine
+            polttoaine = 100
+            print("Tankkisi on täytetty.")
+
+    elif valinta == 3:
         print("Avaa kartan.")
 
     elif valinta == 4:
