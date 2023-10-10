@@ -21,6 +21,21 @@ while peliLoppu == 0:
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         #Polttoaineen kulutus sään ja sijainnin etäisyyden mukaan.
         print("Kohteesi: " + sijainti)
+        polttoaineenMenetys = int()
+
+        #Säätilan vaikutus polttoaineeseen
+        saa = random.randint(0, 2)
+
+        if saa == 0:
+            polttoaine -= (polttoaineenMenetys * 0.85)
+        elif saa == 1:
+            polttoaine -= (polttoaineenMenetys * 1.15)
+        else:
+            break
+
+        print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
+
+        #Tapahtuman arpominen
         noppa = random.randint(1, 12)
 
         if noppa == 1:
@@ -50,6 +65,8 @@ while peliLoppu == 0:
 
         elif noppa == 12:
             print("ÄMPÄRIARVONTA!!")
+            ilmastopisteet += 100
+            rahat += 500
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
