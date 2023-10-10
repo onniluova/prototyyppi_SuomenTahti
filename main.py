@@ -10,6 +10,8 @@ sijainti = ""
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
+#Jos lentokenttä on Rovaniemen lentokenttä, tulosta tuloksesi ja lopeta peli.
+
 while peliLoppu == 0:
     print("Rahamäärä:" + str(rahat))
     print("Polttoaineesi " + str(polttoaine))
@@ -17,9 +19,9 @@ while peliLoppu == 0:
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
     if valinta == 1:
-        print("Valitse lentokenttä: ")
+        lentokentta = input("Valitse lentokenttä: ")
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
-        #Polttoaineen kulutus sään ja sijainnin etäisyyden mukaan.
+        #Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
         print("Kohteesi: " + sijainti)
         polttoaineenMenetys = int()
 
@@ -30,10 +32,13 @@ while peliLoppu == 0:
             polttoaine -= (polttoaineenMenetys * 0.85)
         elif saa == 1:
             polttoaine -= (polttoaineenMenetys * 1.15)
+            ilmastopisteet += 50
         else:
             break
 
-        print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
+        if polttoaine <= 0:
+            print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
+            exit()
 
         #Tapahtuman arpominen
         noppa = random.randint(1, 12)
