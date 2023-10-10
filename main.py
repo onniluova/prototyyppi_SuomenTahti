@@ -18,6 +18,23 @@ while peliLoppu == 0:
     print("Sijaintisi:" + sijainti)
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
+    if lentokentta = Rovaniemi:
+        peliLoppu == 1
+        print("Voitit pelin!")
+        print("__  _")
+        print("\ `/ |")
+        print(" \__`!")
+        print(" / ,' `-.__________________")
+        print("'-'\_____                ◻ `-.")
+        print("   <____()-=O=O=O=O=O=[]====--)")
+        print("     `.___ ,-----,_______...-'")
+        print("          /    .'")
+        print("         /   .'")
+        print("        /  .'")
+        print("        `-'")
+        print("Ilmastopisteet: " + str(ilmastopisteet))
+        print("Kuljetut kilometrit: " + str(kilometrit))
+
     if valinta == 1:
         lentokentta = input("Valitse lentokenttä: ")
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
