@@ -10,6 +10,7 @@ polttoaine = 100
 ilmastopisteet = 0
 sijainti = lentokentat.sijainti
 lentokentta_lista = lentokentat.kohteet()
+kilometrit = 0
 
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
@@ -54,7 +55,7 @@ b = icaokoodi(koodit2)
 
 print(distance.distance(a, b).km)
 
-polttoaine = distance.distance(a, b).km * 0.15
+polttoaine -= distance.distance(a, b).km * 0.15
 print(polttoaine)
 
 #Jos lentokenttä on Rovaniemen lentokenttä, tulosta tuloksesi ja lopeta peli.
@@ -83,7 +84,7 @@ while peliLoppu == 0:
         print("Kuljetut kilometrit: " + str(kilometrit))
 
     if valinta == 1:
-        lentokentta = input("Valitse lentokenttä: " + kohteet())
+        lentokentta = input("Valitse lentokenttä: ")
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         #Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
         print("Kohteesi: " + sijainti)
