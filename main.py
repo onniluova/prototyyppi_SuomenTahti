@@ -2,6 +2,7 @@
 import random
 import mysql.connector
 from geopy import distance
+import lentoasemat
 
 peliLoppu = 0
 rahat = 500
@@ -14,42 +15,13 @@ kilometrit = 0
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
-def kohteet():
-    sql = "SELECT airport.name, municipality, latitude_deg, longitude_deg, airport.ident FROM airport"
-    sql += " inner join country on country.iso_country = airport.iso_country where country.name =" + "'Finland'" + " AND type = 'medium_airport'"
-    sql += " order by latitude_deg"
-    sql += " LIMIT 26"
+lentoasema_lista = lentoasemat.kohteet()
+print(lentoasema_lista)
 
-    kursori = yhteys.cursor()
-    kursori.execute(sql)
-    tulos = kursori.fetchall()
-    for rivi in tulos:
-        print(rivi)
-    return
+marienhamina = lentoasema_lista["EFMA"]
+print(marienhamina.nimi)
 
-yhteys = mysql.connector.connect(
-    host = 'localhost',
-    port = 3306,
-    database = 'lentokonepeli',
-    user = 'root',
-    password = '1234',
-    autocommit = True
-)
-
-sijainti = "EFHK"
-kohteet()
-
-def icaokoodi(idd):
-    sql = "SELECT latitude_deg, longitude_deg from airport"
-    sql += " WHERE ident = '" + idd + "'"
-    kursori = yhteys.cursor()
-    kursori.execute(sql)
-    tulos = kursori.fetchall()
-    return tulos
-
-print(distance.distance(a, b).km)
-
-polttoaine -= distance.distance(a, b).km * 0.15
+#polttoaine -= distance.distance(a, b).km * 0.15
 print(polttoaine)
 
 #Jos lentokenttä on Rovaniemen lentokenttä, tulosta tuloksesi ja lopeta peli.
