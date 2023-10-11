@@ -47,11 +47,6 @@ def icaokoodi(idd):
     tulos = kursori.fetchall()
     return tulos
 
-koodit = input('Anna kahden lentokentän ICAO koodi ')
-a = icaokoodi(koodit)
-koodit2 = input('Anna toinen ')
-b = icaokoodi(koodit2)
-
 print(distance.distance(a, b).km)
 
 polttoaine -= distance.distance(a, b).km * 0.15
