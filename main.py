@@ -1,6 +1,5 @@
 #Peli alkaa tästä. Pelilooppiin siirrytään kun pelaaja on valmis pelaamaan.
 import random
-import lentokentat
 import mysql.connector
 from geopy import distance
 
@@ -8,8 +7,8 @@ peliLoppu = 0
 rahat = 500
 polttoaine = 100
 ilmastopisteet = 0
-sijainti = lentokentat.sijainti
-lentokentta_lista = lentokentat.kohteet()
+sijainti = ""
+lentokentta_lista = []
 kilometrit = 0
 
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
@@ -31,9 +30,9 @@ def kohteet():
 yhteys = mysql.connector.connect(
     host = 'localhost',
     port = 3306,
-    database = 'flight_game',
+    database = 'lentokonepeli',
     user = 'root',
-    password = 'Nasslingmaga98',
+    password = '1234',
     autocommit = True
 )
 
