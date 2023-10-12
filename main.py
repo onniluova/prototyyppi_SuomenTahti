@@ -59,13 +59,13 @@ while peliLoppu == 0:
         lentokentta = input("Valitse lentokenttä: ")
         for key in lentoasema_lista:
             if lentoasema_lista[key].nimi == lentokentta:
+                polttoaineenKulutus = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
+                etäisyys.polttoaineenVähennys(polttoaine, polttoaineenKulutus)
                 nykyinenSijainti = lentoasema_lista[key]
 
         # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
         print("Kohteesi: " + nykyinenSijainti.nimi)
-
-        etäisyys.polttoaineenVähennys(lentoasema_lista[lentokentta].nimi, polttoaine)
 
         if polttoaine <= 0:
             print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")

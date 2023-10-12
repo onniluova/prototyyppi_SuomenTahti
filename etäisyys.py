@@ -9,15 +9,23 @@ def etäisyysLasku(nykyinen, kohde):
 def polttoaineLaskuri(etäisyys, polttoaine):
     return etäisyys <= polttoaine
 
-def polttoaineenVähennys(etäisyys, nykyinenPolttoaine):
+def polttoaineenVähennys(nykyinenPolttoaine, etäisyys):
+    # Lasketaan polttoaineen kulutus sääolosuhteiden mukaan.
     sää = random.randint(0, 2)
     if sää == 0:
-        nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine)
+        kulutuskerroin = 0.85
     elif sää == 1:
-        nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine * 0.2)
-    elif sää == 2:
-        nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine * 0.2)
-    print(nykyinenPolttoaine)
+        kulutuskerroin = 1.15
+    else:
+        kulutuskerroin = 1
+
+    # Lasketaan polttoaineen vähennys.
+    polttoaineenVähennys = etäisyys * kulutuskerroin
+
+    # Vähennetään polttoainetta.
+    nykyinenPolttoaine -= polttoaineenVähennys
+
+    # Palautetaan polttoainemäärä.
     return nykyinenPolttoaine
 #saa = random.randint(0, 2)
 
