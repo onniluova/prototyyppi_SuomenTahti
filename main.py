@@ -3,10 +3,11 @@ import random
 import mysql.connector
 from geopy import distance
 import lentoasemat
+import etäisyys
 
 peliLoppu = 0
 rahat = 500
-polttoaine = 100
+polttoaine = 500
 ilmastopisteet = 0
 kilometrit = 0
 
@@ -16,15 +17,18 @@ print("Hei, " + pelaajanNimi)
 lentoasema_lista = lentoasemat.kohteet()
 print(lentoasema_lista)
 
-marienhamina = lentoasema_lista["EFMA"]
-print(marienhamina.nimi)
+nykyinenSijainti = lentoasema_lista["EFMA"]
+print(nykyinenSijainti.nimi)
 
-nykyinenSijainti = lentoasema_lista["EFHK"]
+mahdollisetKohteet = []
 
 for key in lentoasema_lista:
     kenttä = lentoasema_lista[key]
-    etäisyys = distance.distance(nykyinenSijainti, kenttä.longitude).km
-    print(f"{key}: {etäisyys:.2f} km")
+    etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
+
+    if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
+        mahdollisetKohteet.append(kenttä.nimi)
+        print(mahdollisetKohteet)
 
 #polttoaine -= distance.distance(a, b).km * 0.15
 print(polttoaine)
