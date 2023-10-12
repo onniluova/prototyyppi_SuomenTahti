@@ -15,10 +15,8 @@ pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
 lentoasema_lista = lentoasemat.kohteet()
-print(lentoasema_lista)
 
 nykyinenSijainti = lentoasema_lista["EFMA"]
-print(nykyinenSijainti.nimi)
 
 mahdollisetKohteet = []
 
@@ -57,15 +55,15 @@ while peliLoppu == 0:
         print("Kuljetut kilometrit: " + str(kilometrit))
 
     if valinta == 1:
-        lentokentta = input("Valitse lentokenttä: ")
         print(mahdollisetKohteet)
-        kohdeValinta = lentoasema_lista
-        kohdeValinta.nimi = lentokentta
-        #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
-        #Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
-        print("Kohteesi: " + kohdeValinta.nimi)
-        nykyinenSijainti = kohdeValinta
-        polttoaineenMenetys = int()
+        lentokentta = input("Valitse lentokenttä: ")
+        for key in lentoasema_lista:
+            if lentoasema_lista[key].nimi == lentokentta:
+                nykyinenSijainti = lentoasema_lista[key]
+
+        # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
+        # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
+        print("Kohteesi: " + nykyinenSijainti.nimi)
 
         if polttoaine <= 0:
             print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")

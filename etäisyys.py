@@ -9,6 +9,14 @@ def etäisyysLasku(nykyinen, kohde):
 def polttoaineLaskuri(etäisyys, polttoaine):
     return etäisyys <= polttoaine
 
+def polttoaineenVähennys(etäisyys, nykyinenPolttoaine):
+    sää = random.randint(0, 2)
+    if sää == 0:
+        nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine)
+    elif sää == 1:
+        nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine * 0.2)
+    elif sää == 2:
+        nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine * 0.2)
 
 #saa = random.randint(0, 2)
 
