@@ -3,7 +3,7 @@ import random
 def etäisyysLasku(nykyinen, kohde):
     nykyinenSijainti = (nykyinen.longitude, nykyinen.latitude)
     kohdeSijainti = (kohde.longitude, kohde.latitude)
-    etäisyys = distance.distance(nykyinenSijainti, kohdeSijainti).km
+    etäisyys = distance.distance(nykyinenSijainti, kohdeSijainti).km * 0.3
     return etäisyys
 
 def polttoaineLaskuri(etäisyys, polttoaine):

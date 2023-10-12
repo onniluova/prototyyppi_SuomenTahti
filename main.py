@@ -7,7 +7,7 @@ import etäisyys
 
 peliLoppu = 0
 rahat = 1000
-polttoaine = 500
+polttoaine = 100
 ilmastopisteet = 0
 kilometrit = 0
 
@@ -33,6 +33,7 @@ for key in lentoasema_lista:
 
 while peliLoppu == 0:
     print("Rahamäärä:" + str(rahat))
+    print("Ilmastopisteet: " + str(ilmastopisteet))
     print("Polttoaineesi " + str(polttoaine))
     print("Sijaintisi:" + nykyinenSijainti.nimi)
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
@@ -97,6 +98,7 @@ while peliLoppu == 0:
             print("Rahamäärä: " + str(rahat))
 
         elif noppa in range(6,11):
+            polttoaine -= 50
             print("Ei tapahdu mitään")
 
         elif noppa == 12:
@@ -106,9 +108,9 @@ while peliLoppu == 0:
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
-        if rahat <= 500 - polttoaine:
-            rahat -= 500 - polttoaine
-            polttoaine = 500
+        if rahat <= 100 - polttoaine:
+            rahat -= 100 - polttoaine
+            polttoaine = 100
             print("Tankkisi on täytetty.")
 
     elif valinta == 3:
