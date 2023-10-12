@@ -6,9 +6,9 @@ import lentoasemat
 import etäisyys
 
 peliLoppu = 0
-rahat = 1000
-polttoaine = 150
-ilmastopisteet = 0
+rahat = 250
+polttoaine = 100
+ilmastopisteet = 500
 kilometrit = 0
 
 pelaajanNimi = input(("Tervetuloa pelaamaan Läpi Suomen Maan! Syötä nimi: "))
@@ -69,6 +69,7 @@ while peliLoppu == 0:
 
         # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
+        ilmastopisteet -= 10
         print("Kohteesi: " + nykyinenSijainti.nimi)
 
         if polttoaine <= 0:
@@ -114,7 +115,8 @@ while peliLoppu == 0:
         if rahat >= 150 - polttoaine:
             rahat -= 150 - polttoaine
             polttoaine = 150
-            print("Tankkisi on täytetty.")
+            ilmastopisteet -= 10
+            print("Tankkisi on täytetty. Menetit 10 ilmastopistettä.")
 
     elif valinta == 3:
         print("Avaa kartan.")

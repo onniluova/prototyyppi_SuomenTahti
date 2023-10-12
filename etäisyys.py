@@ -3,7 +3,7 @@ import random
 def etäisyysLasku(nykyinen, kohde):
     nykyinenSijainti = (nykyinen.longitude, nykyinen.latitude)
     kohdeSijainti = (kohde.longitude, kohde.latitude)
-    etäisyys = distance.distance(nykyinenSijainti, kohdeSijainti).km * 0.2
+    etäisyys = distance.distance(nykyinenSijainti, kohdeSijainti).km * 0.3
     return etäisyys
 
 def polttoaineLaskuri(etäisyys, polttoaine):
@@ -14,8 +14,10 @@ def polttoaineenVähennys(nykyinenPolttoaine, etäisyys):
     sää = random.randint(0, 2)
     if sää == 0:
         kulutuskerroin = 0.90
+        print("Hyvä sää. Myötätuuli avusti ja kulutit vähemmän polttoainetta.")
     elif sää == 1:
         kulutuskerroin = 1.10
+        print("Huono sää. Kulutit enemmän polttoainetta.")
     else:
         kulutuskerroin = 1
 
