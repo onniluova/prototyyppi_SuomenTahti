@@ -6,7 +6,7 @@ import lentoasemat
 import etäisyys
 
 peliLoppu = 0
-rahat = 500
+rahat = 1000
 polttoaine = 500
 ilmastopisteet = 0
 kilometrit = 0
@@ -28,7 +28,6 @@ for key in lentoasema_lista:
 
     if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
         mahdollisetKohteet.append(kenttä.nimi)
-        print(mahdollisetKohteet)
 
 #polttoaine -= distance.distance(a, b).km * 0.15
 print(polttoaine)
@@ -38,10 +37,10 @@ print(polttoaine)
 while peliLoppu == 0:
     print("Rahamäärä:" + str(rahat))
     print("Polttoaineesi " + str(polttoaine))
-    print("Sijaintisi:" + sijainti)
+    print("Sijaintisi:" + nykyinenSijainti)
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
-    if lentokentta == "Rovaniemi":
+    if nykyinenSijainti == lentoasema_lista["EFRO"]:
         peliLoppu == 1
         print("Voitit pelin!")
         print("__  _")
@@ -60,9 +59,12 @@ while peliLoppu == 0:
 
     if valinta == 1:
         lentokentta = input("Valitse lentokenttä: ")
+        print(mahdollisetKohteet)
+        kohdeValinta = ""
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         #Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
-        print("Kohteesi: " + sijainti)
+        nykyinenSijainti = kohdeValinta
+        print("Kohteesi: " + nykyinenSijainti)
         polttoaineenMenetys = int()
 
         #Säätilan vaikutus polttoaineeseen
@@ -115,9 +117,9 @@ while peliLoppu == 0:
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
-        if rahat <= 100 - polttoaine:
-            rahat -= 100 - polttoaine
-            polttoaine = 100
+        if rahat <= 1000 - polttoaine:
+            rahat -= 1000 - polttoaine
+            polttoaine = 1000
             print("Tankkisi on täytetty.")
 
     elif valinta == 3:
