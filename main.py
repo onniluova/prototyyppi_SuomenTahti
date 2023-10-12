@@ -6,40 +6,27 @@ import lentoasemat
 import etäisyys
 
 peliLoppu = 0
-rahat = 1000
-polttoaine = 500
-ilmastopisteet = 0
+rahat = 500
+polttoaine = 100
+ilmastopisteet = 100
 kilometrit = 0
 
-pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
+pelaajanNimi = input(("Tervetuloa pelaamaan Läpi Suomen Maan! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
 lentoasema_lista = lentoasemat.kohteet()
-print(lentoasema_lista)
 
 nykyinenSijainti = lentoasema_lista["EFMA"]
-print(nykyinenSijainti.nimi)
 
 mahdollisetKohteet = []
 
-for key in lentoasema_lista:
-    kenttä = lentoasema_lista[key]
-    etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
-
-    if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
-        mahdollisetKohteet.append(kenttä.nimi)
 
 #polttoaine -= distance.distance(a, b).km * 0.15
 
 #Jos lentokenttä on Rovaniemen lentokenttä, tulosta tuloksesi ja lopeta peli.
 
 while peliLoppu == 0:
-    print("Rahamäärä:" + str(rahat))
-    print("Polttoaineesi " + str(polttoaine))
-    print("Sijaintisi:" + nykyinenSijainti.nimi)
-    valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
-
-    if nykyinenSijainti.id == lentoasema_lista["EFRO"]:
+    if nykyinenSijainti.id == "EFRO":
         peliLoppu == 1
         print("Voitit pelin!")
         print("__  _")
@@ -55,17 +42,42 @@ while peliLoppu == 0:
         print("        `-'")
         print("Ilmastopisteet: " + str(ilmastopisteet))
         print("Kuljetut kilometrit: " + str(kilometrit))
+        break
+
+    if rahat <= 0:
+        print("GG")
+        break
+
+    print("Rahamäärä:" + str(rahat))
+    print("Ilmastopisteet: " + str(ilmastopisteet))
+    print("Polttoaineesi " + str(polttoaine))
+    print("Sijaintisi:" + nykyinenSijainti.nimi)
+
+    for key in lentoasema_lista:
+        kenttä = lentoasema_lista[key]
+        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
+
+        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
+            mahdollisetKohteet.append(kenttä)
+
+    valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
     if valinta == 1:
+        for t in mahdollisetKohteet:
+            print(t.nimi + " " + t.id)
         lentokentta = input("Valitse lentokenttä: ")
-        print(mahdollisetKohteet)
-        kohdeValinta = lentoasema_lista
-        kohdeValinta.nimi = lentokentta
-        #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
-        #Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
-        print("Kohteesi: " + kohdeValinta.nimi)
-        nykyinenSijainti = kohdeValinta
-        polttoaineenMenetys = int()
+        for key in lentoasema_lista:
+            if lentoasema_lista[key].id == lentokentta:
+                kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 4
+                etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
+                polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä)
+                nykyinenSijainti = lentoasema_lista[key]
+
+        mahdollisetKohteet.clear()
+        # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
+        # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
+        ilmastopisteet -= 10
+        print("Kohteesi: " + nykyinenSijainti.nimi)
 
         if polttoaine <= 0:
             print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
@@ -97,6 +109,7 @@ while peliLoppu == 0:
             print("Rahamäärä: " + str(rahat))
 
         elif noppa in range(6,11):
+            polttoaine -= 0
             print("Ei tapahdu mitään")
 
         elif noppa == 12:
@@ -106,10 +119,11 @@ while peliLoppu == 0:
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
-        if rahat <= 500 - polttoaine:
-            rahat -= 500 - polttoaine
-            polttoaine = 500
-            print("Tankkisi on täytetty.")
+        if rahat >= 100 - polttoaine:
+            rahat -= 100 - polttoaine
+            polttoaine = 100
+            ilmastopisteet -= 10
+            print("Tankkisi on täytetty. Menetit 10 ilmastopistettä.")
 
     elif valinta == 3:
         print("Avaa kartan.")
@@ -117,3 +131,6 @@ while peliLoppu == 0:
     elif valinta == 4:
         print("Hei hei!")
         peliLoppu = 1
+
+    else:
+        print("Virheellinen syöte!")
