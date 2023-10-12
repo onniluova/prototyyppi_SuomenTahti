@@ -8,7 +8,6 @@ peliLoppu = 0
 rahat = 500
 polttoaine = 100
 ilmastopisteet = 0
-sijainti = ""
 kilometrit = 0
 
 pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
@@ -20,8 +19,12 @@ print(lentoasema_lista)
 marienhamina = lentoasema_lista["EFMA"]
 print(marienhamina.nimi)
 
+nykyinenSijainti = lentoasema_lista["EFHK"]
+
 for key in lentoasema_lista:
     kenttä = lentoasema_lista[key]
+    etäisyys = distance.distance(nykyinenSijainti, kenttä.longitude).km
+    print(f"{key}: {etäisyys:.2f} km")
 
 #polttoaine -= distance.distance(a, b).km * 0.15
 print(polttoaine)
