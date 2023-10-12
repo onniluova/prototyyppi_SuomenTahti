@@ -117,3 +117,6 @@ while peliLoppu == 0:
     elif valinta == 4:
         print("Hei hei!")
         peliLoppu = 1
+
+    else:
+        print("Virheellinen syöte!")
