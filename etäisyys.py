@@ -17,7 +17,8 @@ def polttoaineenVähennys(etäisyys, nykyinenPolttoaine):
         nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine * 0.2)
     elif sää == 2:
         nykyinenPolttoaine -= (etäisyys - nykyinenPolttoaine * 0.2)
-
+    print(nykyinenPolttoaine)
+    return nykyinenPolttoaine
 #saa = random.randint(0, 2)
 
 #if saa == 0:

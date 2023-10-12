@@ -65,6 +65,8 @@ while peliLoppu == 0:
         # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
         print("Kohteesi: " + nykyinenSijainti.nimi)
 
+        etäisyys.polttoaineenVähennys(lentoasema_lista[lentokentta].nimi, polttoaine)
+
         if polttoaine <= 0:
             print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
             exit()
