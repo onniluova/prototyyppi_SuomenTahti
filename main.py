@@ -11,7 +11,7 @@ polttoaine = 100
 ilmastopisteet = 0
 kilometrit = 0
 
-pelaajanNimi = input(("Tervetuloa pelaamaan Suomen Tähteä! Syötä nimi: "))
+pelaajanNimi = input(("Tervetuloa pelaamaan Läpi Suomen Maan! Syötä nimi: "))
 print("Hei, " + pelaajanNimi)
 
 lentoasema_lista = lentoasemat.kohteet()
@@ -25,7 +25,7 @@ for key in lentoasema_lista:
     etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
 
     if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
-        mahdollisetKohteet.append(kenttä.nimi)
+        mahdollisetKohteet.append(kenttä)
 
 #polttoaine -= distance.distance(a, b).km * 0.15
 
@@ -56,12 +56,13 @@ while peliLoppu == 0:
         print("Kuljetut kilometrit: " + str(kilometrit))
 
     if valinta == 1:
-        print(mahdollisetKohteet)
+        for t in mahdollisetKohteet:
+            print(t.nimi + " " + t.id)
         lentokentta = input("Valitse lentokenttä: ")
         for key in lentoasema_lista:
-            if lentoasema_lista[key].nimi == lentokentta:
-                polttoaineenKulutus = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
-                etäisyys.polttoaineenVähennys(polttoaine, polttoaineenKulutus)
+            if lentoasema_lista[key].id == lentokentta:
+                etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
+                polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä)
                 nykyinenSijainti = lentoasema_lista[key]
 
         # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
@@ -98,7 +99,7 @@ while peliLoppu == 0:
             print("Rahamäärä: " + str(rahat))
 
         elif noppa in range(6,11):
-            polttoaine -= 50
+            polttoaine -= 0
             print("Ei tapahdu mitään")
 
         elif noppa == 12:
