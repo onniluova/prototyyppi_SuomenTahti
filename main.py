@@ -81,7 +81,7 @@ while peliLoppu == 0:
         elif noppa ==2:
             raha_lista=[100,200,300]
             raha_maara = random.randint(0,2)
-            rahat += raha_maara
+            rahat += raha_lista[raha_maara]
             print(f"Löysit {raha_lista[raha_maara]}€ Rahamäärä: {rahat}")
 
         elif noppa ==3:
