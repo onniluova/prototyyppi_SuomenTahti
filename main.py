@@ -68,11 +68,12 @@ while peliLoppu == 0:
         lentokentta = input("Valitse lentokenttä: ")
         for key in lentoasema_lista:
             if lentoasema_lista[key].id == lentokentta:
-                kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 3
+                kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 4
                 etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
                 polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä)
                 nykyinenSijainti = lentoasema_lista[key]
 
+        mahdollisetKohteet.clear()
         # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
         ilmastopisteet -= 10
@@ -118,9 +119,9 @@ while peliLoppu == 0:
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
-        if rahat >= 150 - polttoaine:
-            rahat -= 150 - polttoaine
-            polttoaine = 150
+        if rahat >= 100 - polttoaine:
+            rahat -= 100 - polttoaine
+            polttoaine = 100
             ilmastopisteet -= 10
             print("Tankkisi on täytetty. Menetit 10 ilmastopistettä.")
 
