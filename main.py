@@ -59,22 +59,13 @@ while peliLoppu == 0:
     if valinta == 1:
         lentokentta = input("Valitse lentokenttä: ")
         print(mahdollisetKohteet)
-        kohdeValinta = lentokentta
+        kohdeValinta = lentoasema_lista
+        kohdeValinta.nimi = lentokentta
         #Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
         #Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
-        print("Kohteesi: " + kohdeValinta)
+        print("Kohteesi: " + kohdeValinta.nimi)
+        nykyinenSijainti = kohdeValinta
         polttoaineenMenetys = int()
-
-        #Säätilan vaikutus polttoaineeseen
-        saa = random.randint(0, 2)
-
-        if saa == 0:
-            polttoaine -= (polttoaineenMenetys * 0.85)
-        elif saa == 1:
-            polttoaine -= (polttoaineenMenetys * 1.15)
-            ilmastopisteet += 50
-        else:
-            break
 
         if polttoaine <= 0:
             print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
