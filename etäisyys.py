@@ -5,10 +5,8 @@ def etäisyysLasku(nykyinen, kohde):
     kohdeSijainti = (kohde.longitude, kohde.latitude)
     etäisyys = distance.distance(nykyinenSijainti, kohdeSijainti).km * 0.3
     return etäisyys
-
 def polttoaineLaskuri(etäisyys, polttoaine):
     return etäisyys <= polttoaine
-
 def polttoaineenVähennys(nykyinenPolttoaine, etäisyys):
     # Lasketaan polttoaineen kulutus sääolosuhteiden mukaan.
     sää = random.randint(0, 2)
@@ -29,12 +27,3 @@ def polttoaineenVähennys(nykyinenPolttoaine, etäisyys):
 
     # Palautetaan polttoainemäärä.
     return round(nykyinenPolttoaine, 1)
-#saa = random.randint(0, 2)
-
-#if saa == 0:
-#    polttoaine -= (polttoaineenMenetys * 0.85)
-#elif saa == 1:
-#    polttoaine -= (polttoaineenMenetys * 1.15)
-#    ilmastopisteet += 50
-#else:
-#    break

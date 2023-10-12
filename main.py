@@ -1,7 +1,5 @@
 #Peli alkaa tästä. Pelilooppiin siirrytään kun pelaaja on valmis pelaamaan.
 import random
-import mysql.connector
-from geopy import distance
 import lentoasemat
 import etäisyys
 
@@ -19,11 +17,6 @@ lentoasema_lista = lentoasemat.kohteet()
 nykyinenSijainti = lentoasema_lista["EFMA"]
 
 mahdollisetKohteet = []
-
-
-#polttoaine -= distance.distance(a, b).km * 0.15
-
-#Jos lentokenttä on Rovaniemen lentokenttä, tulosta tuloksesi ja lopeta peli.
 
 while peliLoppu == 0:
     if nykyinenSijainti.id == "EFRO":
@@ -53,11 +46,11 @@ while peliLoppu == 0:
     print("Polttoaineesi " + str(polttoaine))
     print("Sijaintisi:" + nykyinenSijainti.nimi)
 
-    for key in lentoasema_lista:
+    for key in lentoasema_lista: #Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.
         kenttä = lentoasema_lista[key]
-        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
+        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä) #Luodaan etäisyyden mittaamisesta muuttuja. Otetaan funktio etäisyydet tiedostosta.
 
-        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
+        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True: #Jos funktio palauttaa true, lisätään kenttä mahdollisiin kohteisiin.
             mahdollisetKohteet.append(kenttä)
 
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
@@ -69,13 +62,12 @@ while peliLoppu == 0:
         for key in lentoasema_lista:
             if lentoasema_lista[key].id == lentokentta:
                 kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 4
-                etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
-                polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä)
-                nykyinenSijainti = lentoasema_lista[key]
+                etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) #Tehdään muuttuja etäisyydestä.
+                polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä) #Vähennetään polttoainetta
+                nykyinenSijainti = lentoasema_lista[key] #Muutetaan kohdesijainti nykyiseksi sijainniksi.
 
-        mahdollisetKohteet.clear()
-        # Tähän pitää lisätä valittavat lentokentät sql tiedostosta.
-        # Polttoaineen sijainnin etäisyyden mukaan. Ilmastopisteiden lisäys reitin ekologisuuden mukaan.
+        mahdollisetKohteet.clear() # Tyhjennetään lista.
+
         ilmastopisteet -= 10
         print("Kohteesi: " + nykyinenSijainti.nimi)
 
