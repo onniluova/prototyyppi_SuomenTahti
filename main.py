@@ -7,7 +7,7 @@ import etäisyys
 
 peliLoppu = 0
 rahat = 1000
-polttoaine = 100
+polttoaine = 150
 ilmastopisteet = 0
 kilometrit = 0
 
@@ -20,12 +20,6 @@ nykyinenSijainti = lentoasema_lista["EFMA"]
 
 mahdollisetKohteet = []
 
-for key in lentoasema_lista:
-    kenttä = lentoasema_lista[key]
-    etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
-
-    if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
-        mahdollisetKohteet.append(kenttä)
 
 #polttoaine -= distance.distance(a, b).km * 0.15
 
@@ -36,9 +30,17 @@ while peliLoppu == 0:
     print("Ilmastopisteet: " + str(ilmastopisteet))
     print("Polttoaineesi " + str(polttoaine))
     print("Sijaintisi:" + nykyinenSijainti.nimi)
+
+    for key in lentoasema_lista:
+        kenttä = lentoasema_lista[key]
+        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
+
+        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
+            mahdollisetKohteet.append(kenttä)
+
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
-    if nykyinenSijainti.id == lentoasema_lista["EFRO"]:
+    if nykyinenSijainti.nimi == "Rovaniemi Airport":
         peliLoppu == 1
         print("Voitit pelin!")
         print("__  _")
@@ -109,9 +111,9 @@ while peliLoppu == 0:
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
-        if rahat >= 100 - polttoaine:
-            rahat -= 100 - polttoaine
-            polttoaine = 100
+        if rahat >= 150 - polttoaine:
+            rahat -= 150 - polttoaine
+            polttoaine = 150
             print("Tankkisi on täytetty.")
 
     elif valinta == 3:

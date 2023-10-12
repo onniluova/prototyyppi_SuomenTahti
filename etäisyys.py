@@ -13,9 +13,9 @@ def polttoaineenVähennys(nykyinenPolttoaine, etäisyys):
     # Lasketaan polttoaineen kulutus sääolosuhteiden mukaan.
     sää = random.randint(0, 2)
     if sää == 0:
-        kulutuskerroin = 0.85
+        kulutuskerroin = 0.90
     elif sää == 1:
-        kulutuskerroin = 1.15
+        kulutuskerroin = 1.10
     else:
         kulutuskerroin = 1
 
