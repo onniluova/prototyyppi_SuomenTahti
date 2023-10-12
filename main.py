@@ -68,6 +68,7 @@ while peliLoppu == 0:
         lentokentta = input("Valitse lentokenttä: ")
         for key in lentoasema_lista:
             if lentoasema_lista[key].id == lentokentta:
+                kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 3
                 etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])
                 polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä)
                 nykyinenSijainti = lentoasema_lista[key]
