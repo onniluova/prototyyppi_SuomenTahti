@@ -6,9 +6,9 @@ import lentoasemat
 import etäisyys
 
 peliLoppu = 0
-rahat = 250
+rahat = 500
 polttoaine = 100
-ilmastopisteet = 500
+ilmastopisteet = 100
 kilometrit = 0
 
 pelaajanNimi = input(("Tervetuloa pelaamaan Läpi Suomen Maan! Syötä nimi: "))
@@ -26,21 +26,7 @@ mahdollisetKohteet = []
 #Jos lentokenttä on Rovaniemen lentokenttä, tulosta tuloksesi ja lopeta peli.
 
 while peliLoppu == 0:
-    print("Rahamäärä:" + str(rahat))
-    print("Ilmastopisteet: " + str(ilmastopisteet))
-    print("Polttoaineesi " + str(polttoaine))
-    print("Sijaintisi:" + nykyinenSijainti.nimi)
-
-    for key in lentoasema_lista:
-        kenttä = lentoasema_lista[key]
-        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
-
-        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
-            mahdollisetKohteet.append(kenttä)
-
-    valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
-
-    if nykyinenSijainti.nimi == "Rovaniemi Airport":
+    if nykyinenSijainti.id == "EFRO":
         peliLoppu == 1
         print("Voitit pelin!")
         print("__  _")
@@ -56,6 +42,25 @@ while peliLoppu == 0:
         print("        `-'")
         print("Ilmastopisteet: " + str(ilmastopisteet))
         print("Kuljetut kilometrit: " + str(kilometrit))
+        break
+
+    if rahat <= 0:
+        print("GG")
+        break
+
+    print("Rahamäärä:" + str(rahat))
+    print("Ilmastopisteet: " + str(ilmastopisteet))
+    print("Polttoaineesi " + str(polttoaine))
+    print("Sijaintisi:" + nykyinenSijainti.nimi)
+
+    for key in lentoasema_lista:
+        kenttä = lentoasema_lista[key]
+        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)
+
+        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:
+            mahdollisetKohteet.append(kenttä)
+
+    valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
     if valinta == 1:
         for t in mahdollisetKohteet:
