@@ -59,7 +59,7 @@ while peliLoppu == 0:
         for t in mahdollisetKohteet:
             etäisyydet1 = etäisyys.etäisyysLasku(nykyinenSijainti, t)
             #print(t.nimi + " " + t.id + " " + str(etäisyydet1) + " km")
-            print(f"{t.nimi} {t.id}. Etäisyys lentokentälle:{etäisyydet1:.1f} km")
+            print(f"{t.nimi} {t.id}. Etäisyys lentokentälle: {etäisyydet1:.1f} km")
         lentokentta = input("Valitse lentokenttä: ")
 
         for key in lentoasema_lista:
@@ -115,11 +115,12 @@ while peliLoppu == 0:
 
     elif valinta == 2:
         if rahat >= 100 - polttoaine:
+            määrä = (100 - polttoaine)
             rahat -= 100 - polttoaine
             round(rahat)
             polttoaine = 100
             ilmastopisteet -= 10
-            print("Tankkisi on täytetty. Menetit 10 ilmastopistettä.")
+            print("Tankkasit " + str(määrä) + " litraa." + " Menetit 10 ilmastopistettä.")
 
     elif valinta == 3:
         print("Avaa kartan.")
