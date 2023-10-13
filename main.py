@@ -10,6 +10,7 @@ ilmastopisteet = 100
 kilometrit = 0
 
 pelaajanNimi = input(("Tervetuloa pelaamaan Läpi Suomen Maan! Syötä nimi: "))
+
 print("Hei, " + pelaajanNimi)
 
 lentoasema_lista = lentoasemat.kohteet()
@@ -21,7 +22,7 @@ mahdollisetKohteet = []
 while peliLoppu == 0:
     if nykyinenSijainti.id == "EFRO":
         peliLoppu == 1
-        print("Voitit pelin!")
+        print("Voitit pelin, " + pelaajanNimi +  "!")
         print("__  _")
         print("\ `/ |")
         print(" \__`!")
@@ -34,7 +35,7 @@ while peliLoppu == 0:
         print("        /  .'")
         print("        `-'")
         print("Ilmastopisteet: " + str(ilmastopisteet))
-        print("Kuljetut kilometrit: " + str(kilometrit))
+        print("Kuljetut kilometrit: " + str(round(kilometrit, 1)))
         break
 
     if rahat <= 0:
@@ -51,16 +52,16 @@ while peliLoppu == 0:
     if valinta == 1:
         for key in lentoasema_lista:  # Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.
             kenttä = lentoasema_lista[key]
-            etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti,
-                                                kenttä)  # Luodaan etäisyyden mittaamisesta muuttuja. Otetaan funktio etäisyydet tiedostosta.
-
-            if etäisyys.polttoaineLaskuri(etäisyydet,
-                                          polttoaine) == True:  # Jos funktio palauttaa true, lisätään kenttä mahdollisiin kohteisiin.
+            etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)  # Luodaan etäisyyden mittaamisesta muuttuja. Otetaan funktio etäisyydet tiedostosta.
+            if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True:  # Jos funktio palauttaa true, lisätään kenttä mahdollisiin kohteisiin.
                 mahdollisetKohteet.append(kenttä)
-
+        #Printataan nimet ja icao koodit
         for t in mahdollisetKohteet:
-            print(t.nimi + " " + t.id)
+            etäisyydet1 = etäisyys.etäisyysLasku(nykyinenSijainti, t)
+            #print(t.nimi + " " + t.id + " " + str(etäisyydet1) + " km")
+            print(f"{t.nimi} {t.id} {etäisyydet1:.1f} km")
         lentokentta = input("Valitse lentokenttä: ")
+
         for key in lentoasema_lista:
             if lentoasema_lista[key].id == lentokentta:
                 kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 4
@@ -88,7 +89,7 @@ while peliLoppu == 0:
             raha_lista=[100,200,300]
             raha_maara = random.randint(0,2)
             rahat += raha_lista[raha_maara]
-            print(f"Löysit {raha_lista[raha_maara]}€ Rahamäärä: {rahat}")
+            print(f"Löysit {raha_lista[raha_maara]}€")
 
         elif noppa ==3:
             print("Lensit ekologisesti. Sait 10 ilmastopistettä.")
@@ -101,7 +102,6 @@ while peliLoppu == 0:
         elif noppa == 5:
             print("Lentokoneessa on vikaa. Korjaus maksaa: -100€")
             rahat -= 100
-            print("Rahamäärä: " + str(rahat))
 
         elif noppa in range(6,11):
             polttoaine -= 0
@@ -116,6 +116,7 @@ while peliLoppu == 0:
     elif valinta == 2:
         if rahat >= 100 - polttoaine:
             rahat -= 100 - polttoaine
+            round(rahat, 1)
             polttoaine = 100
             ilmastopisteet -= 10
             print("Tankkisi on täytetty. Menetit 10 ilmastopistettä.")
