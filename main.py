@@ -82,7 +82,7 @@ while peliLoppu == 0:
         noppa = random.randint(1, 12)
 
         if noppa == 1:
-            print("Lentokoneessa on vikaa. Korjaus maksaa: -100€")
+            print("Lentokoneessa on vikaa. Korjaus maksaa 100€")
             rahat -= 100
 
         elif noppa ==2:
@@ -100,7 +100,7 @@ while peliLoppu == 0:
             rahat -= 100
 
         elif noppa == 5:
-            print("Lentokoneessa on vikaa. Korjaus maksaa: -100€")
+            print("Lentokoneessa on vikaa. Korjaus maksaa 100€")
             rahat -= 100
 
         elif noppa in range(6,11):
