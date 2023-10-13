@@ -93,7 +93,7 @@ while peliLoppu == 0:
 
         elif noppa ==3:
             print("Lensit ekologisesti. Sait 10 ilmastopistettä.")
-            ilmastopisteet += 1
+            ilmastopisteet += 10
 
         elif noppa == 4:
             print("Sinut ryöstettiin. Menetit 100€")
