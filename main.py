@@ -126,7 +126,7 @@ while peliLoppu == 0:
         print("Avaa kartan.")
 
     elif valinta == 4:
-        print("Hei hei!")
+        print("Kiva kun pelasit, hei hei!")
         peliLoppu = 1
 
     else:
