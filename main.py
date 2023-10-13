@@ -45,7 +45,7 @@ while peliLoppu == 0:
     print("Rahamäärä: " + str(round(rahat)) + " euroa")
     print("Ilmastopisteet: " + str(ilmastopisteet))
     print("Polttoaineesi: " + str(polttoaine) + " litraa")
-    print("Sijaintisi:" + nykyinenSijainti.nimi)
+    print("Sijaintisi: " + nykyinenSijainti.nimi)
 
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
