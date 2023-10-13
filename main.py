@@ -109,8 +109,8 @@ while peliLoppu == 0:
 
         elif noppa == 12:
             print("ÄMPÄRIARVONTA!!")
-            ilmastopisteet += 100
-            rahat += 500
+            ilmastopisteet += 50
+            rahat += 250
         #Nopan heitto ja tapahtuma
 
     elif valinta == 2:
