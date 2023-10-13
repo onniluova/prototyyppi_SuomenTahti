@@ -42,9 +42,9 @@ while peliLoppu == 0:
         print("GG")
         break
 
-    print("Rahamäärä:" + str(rahat))
+    print("Rahamäärä: " + str(round(rahat)) + " euroa")
     print("Ilmastopisteet: " + str(ilmastopisteet))
-    print("Polttoaineesi " + str(polttoaine))
+    print("Polttoaineesi: " + str(polttoaine) + " litraa")
     print("Sijaintisi:" + nykyinenSijainti.nimi)
 
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
@@ -116,7 +116,7 @@ while peliLoppu == 0:
     elif valinta == 2:
         if rahat >= 100 - polttoaine:
             rahat -= 100 - polttoaine
-            round(rahat, 1)
+            round(rahat)
             polttoaine = 100
             ilmastopisteet -= 10
             print("Tankkisi on täytetty. Menetit 10 ilmastopistettä.")
