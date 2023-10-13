@@ -59,7 +59,7 @@ while peliLoppu == 0:
         for t in mahdollisetKohteet:
             etäisyydet1 = etäisyys.etäisyysLasku(nykyinenSijainti, t)
             #print(t.nimi + " " + t.id + " " + str(etäisyydet1) + " km")
-            print(f"{t.nimi} {t.id} {etäisyydet1:.1f} km")
+            print(f"{t.nimi} {t.id}. Etäisyys lentokentälle:{etäisyydet1:.1f} km")
         lentokentta = input("Valitse lentokenttä: ")
 
         for key in lentoasema_lista:
