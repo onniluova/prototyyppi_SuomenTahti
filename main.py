@@ -46,16 +46,18 @@ while peliLoppu == 0:
     print("Polttoaineesi " + str(polttoaine))
     print("Sijaintisi:" + nykyinenSijainti.nimi)
 
-    for key in lentoasema_lista: #Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.
-        kenttä = lentoasema_lista[key]
-        etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä) #Luodaan etäisyyden mittaamisesta muuttuja. Otetaan funktio etäisyydet tiedostosta.
-
-        if etäisyys.polttoaineLaskuri(etäisyydet, polttoaine) == True: #Jos funktio palauttaa true, lisätään kenttä mahdollisiin kohteisiin.
-            mahdollisetKohteet.append(kenttä)
-
     valinta = int(input("Mitä haluat tehdä? 1) Liiku 2) Tankkaa 3) Kartta 4) Poistu pelistä "))
 
     if valinta == 1:
+        for key in lentoasema_lista:  # Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.
+            kenttä = lentoasema_lista[key]
+            etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti,
+                                                kenttä)  # Luodaan etäisyyden mittaamisesta muuttuja. Otetaan funktio etäisyydet tiedostosta.
+
+            if etäisyys.polttoaineLaskuri(etäisyydet,
+                                          polttoaine) == True:  # Jos funktio palauttaa true, lisätään kenttä mahdollisiin kohteisiin.
+                mahdollisetKohteet.append(kenttä)
+
         for t in mahdollisetKohteet:
             print(t.nimi + " " + t.id)
         lentokentta = input("Valitse lentokenttä: ")
@@ -89,7 +91,8 @@ while peliLoppu == 0:
             print(f"Löysit {raha_lista[raha_maara]}€ Rahamäärä: {rahat}")
 
         elif noppa ==3:
-            print("Myötätuuli")
+            print("Lensit ekologisesti. Sait 10 ilmastopistettä.")
+            ilmastopisteet += 1
 
         elif noppa == 4:
             print("Sinut ryöstettiin. Menetit 100€")
