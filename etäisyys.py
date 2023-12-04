@@ -1,5 +1,6 @@
 from geopy import distance
-import random
+import api
+
 def etäisyysLasku(nykyinen, kohde):
     nykyinenSijainti = (nykyinen.longitude, nykyinen.latitude)
     kohdeSijainti = (kohde.longitude, kohde.latitude)
@@ -7,17 +8,25 @@ def etäisyysLasku(nykyinen, kohde):
     return etäisyys
 def polttoaineLaskuri(etäisyys, polttoaine):
     return etäisyys <= polttoaine
-def polttoaineenVähennys(nykyinenPolttoaine, etäisyys):
+def polttoaineenVähennys(nykyinenPolttoaine, etäisyys, kohde):
     # Lasketaan polttoaineen kulutus sääolosuhteiden mukaan.
-    sää = random.randint(0, 2)
-    if sää == 0:
+    sää = api.palautaSääKohteesta(kohde)
+    print(sää)
+    if sää == "Clear":
         kulutuskerroin = 0.90
-        print("Hyvä sää. Myötätuuli avusti ja kulutit vähemmän polttoainetta.")
-    elif sää == 1:
+        print("Myötätuuli avusti ja kulutit vähemmän polttoainetta.")
+    elif sää == "Few clouds":
+        kulutuskerroin = 1.00
+        print("Pilvinen sää. Normaali kulutus.")
+    elif sää == "Scattered clouds":
+        kulutuskerroin = 1.00
+        print("Pilvinen sää. Normaali kulutus.")
+    elif sää == "Snow":
         kulutuskerroin = 1.10
-        print("Huono sää. Kulutit enemmän polttoainetta.")
+        print("Luminen sää. Suurempi kulutus.")
     else:
         kulutuskerroin = 1
+        print("Säätila ei vaikuta kulutukseen.")
 
     # Lasketaan polttoaineen vähennys.
     polttoaineenVähennys = etäisyys * kulutuskerroin
