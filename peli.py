@@ -12,15 +12,11 @@ class Peli:
     kilometrit = 0
     # laittakaa alustukset konstruktoriin niin on selkää mitä objektin luonnissa tapahtuu
 
-    pelaajanNimi = input(("Tervetuloa pelaamaan Läpi Suomen Maan! Syötä nimi: "))
-
-    print("Hei, " + pelaajanNimi)
-
-    lentoasema_lista = lentoasemat.kohteet()
-
-    nykyinenSijainti = lentoasema_lista["EFMA"]
-
-    mahdollisetKohteet = []
+    def haeKentät(self):
+        lentoasema_lista = lentoasemat.kohteet()
+        nykyinenSijainti = lentoasema_lista["EFMA"]
+        mahdollisetKohteet = []
+        return lentoasema_lista, nykyinenSijainti, mahdollisetKohteet
 
     def siirryKohteeseen(self):
         self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista = siirryKohteeseen.siirryKohteesesen(self.polttoaine, self.kilometrit, self.nykyinenSijainti, self.lentoasema_lista)
@@ -44,8 +40,6 @@ class Peli:
         polttoaine = 100
         ilmastopisteet -= 10
         print("Tankkasit " + str(määrä) + " litraa." + " Menetit 10 ilmastopistettä.")
-
-    print("Avaa kartan.")
 
     print("Hei hei!")
     peliLoppu = 1
