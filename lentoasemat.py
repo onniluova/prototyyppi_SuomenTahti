@@ -9,6 +9,12 @@ class lentokenttä:
         self.latitude = latitude
         self.municipality = municipality
 
+def muunnaKunta(municipality):
+    # Split the string at '/' and take the first part
+    primary_municipality = municipality.split('/')[0].strip()
+    # Replace spaces with underscores
+    return primary_municipality.replace(" ", "_")
+
 def kohteet():
     yhteys = mysql.connector.connect(
         host='localhost',
@@ -28,7 +34,8 @@ def kohteet():
     kursori.execute(sql)
     tulos = kursori.fetchall()
     for rivi in tulos:
-        lentoasema = lentokenttä(rivi[0], rivi[1], rivi[2], rivi[4], rivi[3])
+        muunnettu_municipality = muunnaKunta(rivi[4])
+        lentoasema = lentokenttä(rivi[0], rivi[1], rivi[2], muunnettu_municipality, rivi[3])
         lentokentta_lista.update({rivi[3]: lentoasema})
     return lentokentta_lista
 

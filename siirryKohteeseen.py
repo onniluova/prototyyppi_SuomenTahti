@@ -1,6 +1,6 @@
 import lentoasemat
 import etäisyys
-def valinnat(polttoaine, kilometrit, nykyinenSijainti, lentoasema_lista):
+def siirryKohteesesen(polttoaine, kilometrit, nykyinenSijainti, lentoasema_lista):
 
     mahdollisetKohteet = []
 
