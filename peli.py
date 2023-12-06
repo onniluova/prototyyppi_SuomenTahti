@@ -4,6 +4,7 @@ import random
 import lentoasemat
 import etäisyys
 import siirryKohteeseen
+import nopanHeittoFunktio
 class Peli:
     peliLoppu = 0
     rahat = 500
@@ -62,6 +63,9 @@ class Peli:
             if polttoaine <= 0:
                 print("Polttoaine loppui ja koneesi tippui. Hävisit pelin.")
                 exit()
+
+            noppa = nopanHeittoFunktio.Noppa()
+            rahat, ilmastopisteet, polttoaine = noppa.nopanHeitto(rahat, ilmastopisteet, polttoaine)
 
         elif valinta == 2:
             if rahat >= 100 - polttoaine:
