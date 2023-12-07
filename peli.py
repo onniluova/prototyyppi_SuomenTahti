@@ -10,7 +10,7 @@ class Peli:
     polttoaine = 100
     ilmastopisteet = 100
     kilometrit = 0
-    # laittakaa alustukset konstruktoriin niin on selkää mitä objektin luonnissa tapahtuu
+    # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu
 
     def haeKentät(self):
         lentoasema_lista = lentoasemat.kohteet()
