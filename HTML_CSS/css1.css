@@ -12,8 +12,10 @@ body {
     background-color: coral;
     justify-content: center;
     text-align: center;
-
-
+}
+header {
+    margin: 0;
+    padding: 0;
 }
 
 main {
@@ -22,15 +24,33 @@ main {
 }
 
 .kartta {
-    width: 50%;
-    height: 10rem;
+    width: 40%;
     text-align: center;
     background-color: olive;
+    margin: 0;
+    padding: 1rem;
 
 }
-.valinnat {
-    width: 50%;
-    height: 10rem;
+.kartta img{
+    width: 80%
+}
+.näyttö {
+    width: 60%;
     text-align: center;
     background-color: blueviolet;
+    margin: 0;
+    justify-content: space-evenly;
+}
+.näyttö p {
+    height: 70%;
+    padding: 0;
+    justify-content: space-evenly;
+    margin: 0;
+
+}
+
+.valinnat {
+    background-color: dimgray;
+    height: 30%;
+    margin: 0;
 }
