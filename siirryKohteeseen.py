@@ -2,6 +2,8 @@ import lentoasemat
 import etäisyys
 def siirryKohteesesen(polttoaine, kilometrit, nykyinenSijainti, lentoasema_lista):
 
+    # Eritellään mahdollisetkohteet funktio ja siirryKohteeseen funktio.
+
     mahdollisetKohteet = []
 
     for key in lentoasema_lista:  # Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.

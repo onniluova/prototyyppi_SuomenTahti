@@ -4,16 +4,17 @@ import peli
 app = Flask(__name__)
 
 # Tehdään peli instanssi
-game_instance = peli.Peli()
+game_instance = None
 
-@app.route('/luo_peli', methods=['POST'])
-def luo_peli():
+@app.route('/luoPeli', methods=['GET'])
+def luoPeli():
     global game_instance
     game_instance = peli.Peli()
     return jsonify(message="Uusi peli luotu"), 200
 
-@app.route('/get_status', methods=['GET'])
-def get_status():
+@app.route('/getStatus', methods=['GET'])
+def getStatus():
+    game_instance.haeKentät()
     status = {
         'rahat': game_instance.rahat,
         'polttoaine': game_instance.polttoaine,
