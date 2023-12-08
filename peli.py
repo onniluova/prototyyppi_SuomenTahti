@@ -42,8 +42,3 @@ class Peli:
             self.polttoaine = 100
             self.ilmastopisteet -= 10
             return self.rahat, self.polttoaine, self.ilmastopisteet
-
-    print("Hei hei!")
-    peliLoppu = 1
-
-    print("Virheellinen syöte!")
