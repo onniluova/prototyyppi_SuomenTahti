@@ -14,7 +14,6 @@ def luoPeli():
 
 @app.route('/getStatus', methods=['GET'])
 def getStatus():
-    game_instance.haeKentät()
     status = {
         'rahat': game_instance.rahat,
         'polttoaine': game_instance.polttoaine,
@@ -23,6 +22,18 @@ def getStatus():
         'nykyinenSijainti': game_instance.nykyinenSijainti.nimi,
     }
     return jsonify(status), 200
+@app.route('/haeKentat', methods=['GET'])
+def haeKentat():
+    game_instance.haeKentät()
+    airport_details = {
+        airport_id: {
+            'nimi': airport.nimi,
+            'longitude': airport.longitude,
+            'latitude': airport.latitude
+        } for airport_id, airport in game_instance.lentoasema_lista.items()
+    }
+    return jsonify(airport_details), 200
+
 
 # Tarvittaessa lisätään muita reittejä
 

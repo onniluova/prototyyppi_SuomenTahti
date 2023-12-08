@@ -18,8 +18,8 @@ class Peli:
     # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu
 
     def haeKentät(self):
-        mahdollisetKohteet = []
-        return self.lentoasema_lista, mahdollisetKohteet
+        self.lentoasema_lista = lentoasemat.kohteet()
+        return self.lentoasema_lista
 
     def haeMahdollisetKentät(self):
         kohteet = etsiMahdollisetKohteet.etsiMahdollisetKohteet(self.nykyinenSijainti, self.polttoaine, self.lentoasema_lista)
@@ -29,7 +29,6 @@ class Peli:
         self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista = siirryKohteeseen.siirryKohteesesen(self.polttoaine, self.kilometrit, self.nykyinenSijainti, self.lentoasema_lista)
         self.mahdollisetKohteet.clear() # Tyhjennetään lista.
         self.ilmastopisteet -= 10
-        print("Kohteesi: " + self.nykyinenSijainti.nimi)
         return self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista
 
     def heitaNoppaa(self):
