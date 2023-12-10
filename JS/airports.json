@@ -1,0 +1,133 @@
+
+{
+    "EFHA": {
+      "latitude": 61.856039,
+      "longitude": 24.786686,
+      "nimi": "Halli Airport"
+    },
+    "EFIT": {
+      "latitude": 62.1661,
+      "longitude": 30.073601,
+      "nimi": "Kitee Airport"
+    },
+    "EFJO": {
+      "latitude": 62.662899,
+      "longitude": 29.6075,
+      "nimi": "Joensuu Airport"
+    },
+    "EFJY": {
+      "latitude": 62.399502,
+      "longitude": 25.678301,
+      "nimi": "Jyvaskyla Airport"
+    },
+    "EFKA": {
+      "latitude": 63.127102,
+      "longitude": 23.051399,
+      "nimi": "Kauhava Airfield"
+    },
+    "EFKE": {
+      "latitude": 65.778701782227,
+      "longitude": 24.582099914551,
+      "nimi": "Kemi-Tornio Airport"
+    },
+    "EFKI": {
+      "latitude": 64.2855,
+      "longitude": 27.6924,
+      "nimi": "Kajaani Airport"
+    },
+    "EFKJ": {
+      "latitude": 62.462502,
+      "longitude": 22.393101,
+      "nimi": "Kauhajoki Airfield"
+    },
+    "EFKK": {
+      "latitude": 63.721199,
+      "longitude": 23.143101,
+      "nimi": "Kokkola-Pietarsaari Airport"
+    },
+    "EFKS": {
+      "latitude": 65.987602,
+      "longitude": 29.239401,
+      "nimi": "Kuusamo Airport"
+    },
+    "EFKU": {
+      "latitude": 63.007099,
+      "longitude": 27.7978,
+      "nimi": "Kuopio Airport"
+    },
+    "EFLP": {
+      "latitude": 61.044601,
+      "longitude": 28.144743,
+      "nimi": "Lappeenranta Airport"
+    },
+    "EFMA": {
+      "latitude": 60.1222,
+      "longitude": 19.898199,
+      "nimi": "Mariehamn Airport"
+    },
+    "EFMI": {
+      "latitude": 61.6866,
+      "longitude": 27.201799,
+      "nimi": "Mikkeli Airport"
+    },
+    "EFOU": {
+      "latitude": 64.930099,
+      "longitude": 25.354601,
+      "nimi": "Oulu Airport"
+    },
+    "EFPO": {
+      "latitude": 61.4617,
+      "longitude": 21.799999,
+      "nimi": "Pori Airport"
+    },
+    "EFPR": {
+      "latitude": 60.479167,
+      "longitude": 26.593889,
+      "nimi": "Helsinki East-Redstone Airport"
+    },
+    "EFRO": {
+      "latitude": 66.564796447754,
+      "longitude": 25.830400466919,
+      "nimi": "Rovaniemi Airport"
+    },
+    "EFSA": {
+      "latitude": 61.9431,
+      "longitude": 28.945101,
+      "nimi": "Savonlinna Airport"
+    },
+    "EFSI": {
+      "latitude": 62.692101,
+      "longitude": 22.8323,
+      "nimi": "Seinajoki Airport"
+    },
+    "EFTP": {
+      "latitude": 61.414101,
+      "longitude": 23.604401,
+      "nimi": "Tampere-Pirkkala Airport"
+    },
+    "EFTU": {
+      "latitude": 60.514099,
+      "longitude": 22.2628,
+      "nimi": "Turku Airport"
+    },
+    "EFUT": {
+      "latitude": 60.8964,
+      "longitude": 26.9384,
+      "nimi": "Utti Air Base"
+    },
+    "EFVA": {
+      "latitude": 63.050701,
+      "longitude": 21.762199,
+      "nimi": "Vaasa Airport"
+    },
+    "EFVR": {
+      "latitude": 62.171101,
+      "longitude": 27.868601,
+      "nimi": "Varkaus Airport"
+    },
+    "EFYL": {
+      "latitude": 64.054722,
+      "longitude": 24.725278,
+      "nimi": "Ylivieska Airfield"
+    }
+  }

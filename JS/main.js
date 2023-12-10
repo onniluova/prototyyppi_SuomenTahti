@@ -17,8 +17,6 @@ async function getData(url) {
 async function gameSetup() {
     try {
         const gameData = await getData('/JS/airports.json');
-        console.log(gameData)
-
     }catch (error) {
         console.log(error)
     }
