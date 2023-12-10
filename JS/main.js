@@ -7,13 +7,20 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 map.setView([60, 24], 7);
 
 
-async function gameSetup () {
-    try {
-        const response = await fetch('http://127.0.0.1:5000');
-        const data = await response.json();
-        console.log(data);
-    } catch (error){
-        console.log(error);
-    }
-
+async function getData(url) {
+    const response = await fetch(url);
+    if(!response.ok) throw new Error('invalid server input');
+    const data = await response.json();
+    return data
 }
+
+async function gameSetup() {
+    try {
+        const gameData = await getData('/JS/airports.json');
+        console.log(gameData)
+    }catch (error) {
+        console.log(error)
+    }
+}
+
+gameSetup()
