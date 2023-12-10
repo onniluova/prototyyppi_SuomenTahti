@@ -23,17 +23,15 @@ main {
     background-color: cadetblue;
 }
 
-.kartta {
-    width: 40%;
-    text-align: center;
-    background-color: olive;
-    margin: 0;
-    padding: 1rem;
+#map {
+  width: 40%;
+  height: 40vh;
+  overflow: hidden;
+}
 
-}
-.kartta img{
-    width: 80%
-}
+
+
+
 .näyttö {
     width: 60%;
     text-align: center;
