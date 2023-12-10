@@ -17,14 +17,14 @@ def siirryKohteesesen(polttoaine, kilometrit, nykyinenSijainti, lentoasema_lista
         # print(t.nimi + " " + t.id + " " + str(etäisyydet1) + " km")
         print(f"{t.nimi} {t.id}. Etäisyys lentokentälle: {etäisyydet1:.1f} km")
 
-    lentokentta = input("Valitse lentokenttä: ")
+    lentokenttä = input("Valitse lentokenttä: ")
 
     for key in lentoasema_lista:
-        if lentoasema_lista[key].id == lentokentta:
+        if lentoasema_lista[key].id == lentokenttä:
             kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 4
             etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])  # Tehdään muuttuja etäisyydestä.
             polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä, lentoasema_lista[key].municipality)  # Vähennetään polttoainetta
             nykyinenSijainti = lentoasema_lista[key]  # Muutetaan kohdesijainti nykyiseksi sijainniksi.
-    mahdollisetKohteet.clear()  # Tyhjennetään lista.
+        mahdollisetKohteet.clear()  # Tyhjennetään lista.
 
     return polttoaine, nykyinenSijainti, kilometrit, lentoasema_lista

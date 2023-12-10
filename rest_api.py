@@ -46,6 +46,18 @@ def haeMahdolliset():
     }
     return jsonify(airport_details), 200
 
+@app.route('/siirry/<airport_id>', methods=['GET'])
+def siirry(airport_id):
+    game_instance.siirryKohteeseen(airport_id)
+    status = {
+        'rahat': game_instance.rahat,
+        'polttoaine': game_instance.polttoaine,
+        'ilmastopisteet': game_instance.ilmastopisteet,
+        'kilometrit': game_instance.kilometrit,
+        'nykyinenSijainti': game_instance.nykyinenSijainti,
+    }
+    return jsonify(status), 200
+
 @app.route('/noppa', methods=['GET'])
 def noppa():
     game_instance.heitaNoppaa()
