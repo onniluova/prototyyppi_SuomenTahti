@@ -29,11 +29,10 @@ def haeKentat():
         airport_id: {
             'nimi': airport.nimi,
             'longitude': airport.longitude,
-            'latitude': airport.latitude
+            'latitude': airport.latitude,
         } for airport_id, airport in game_instance.lentoasema_lista.items()
     }
     return jsonify(airport_details), 200
-
 
 # Tarvittaessa lisätään muita reittejä
 
