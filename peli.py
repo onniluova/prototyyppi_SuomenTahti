@@ -22,8 +22,8 @@ class Peli:
         return self.lentoasema_lista
 
     def haeMahdollisetKentät(self):
-        kohteet = etsiMahdollisetKohteet.etsiMahdollisetKohteet(self.nykyinenSijainti, self.polttoaine, self.lentoasema_lista)
-        return kohteet
+        self.mahdollisetKohteet = etsiMahdollisetKohteet.etsiMahdollisetKohteet(self.nykyinenSijainti, self.polttoaine, self.lentoasema_lista)
+        return self.mahdollisetKohteet
 
     def siirryKohteeseen(self):
         self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista = siirryKohteeseen.siirryKohteesesen(self.polttoaine, self.kilometrit, self.nykyinenSijainti, self.lentoasema_lista)
@@ -34,6 +34,7 @@ class Peli:
     def heitaNoppaa(self):
         noppa = nopanHeittoFunktio.Noppa()
         self.rahat, self.ilmastopisteet, self.polttoaine = noppa.nopanHeitto(self.rahat, self.ilmastopisteet, self.polttoaine)
+        return self.rahat, self.ilmastopisteet, self.polttoaine
 
     def tankkaus(self):
         if (self.rahat >= 100 - self.polttoaine):

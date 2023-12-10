@@ -3,6 +3,9 @@ import etäisyys
 def etsiMahdollisetKohteet(nykyinenSijainti, polttoaine, lentoasema_lista):
     mahdollisetKohteet = []
 
+    if isinstance(nykyinenSijainti, str):
+        nykyinenSijainti = lentoasema_lista.get(nykyinenSijainti)
+
     for key in lentoasema_lista:  # Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.
         kenttä = lentoasema_lista[key]
         etäisyydet = etäisyys.etäisyysLasku(nykyinenSijainti, kenttä)  # Luodaan etäisyyden mittaamisesta muuttuja. Otetaan funktio etäisyydet tiedostosta.
