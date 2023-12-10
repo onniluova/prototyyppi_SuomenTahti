@@ -15,7 +15,7 @@ class Peli:
         self.nykyinenSijainti = nykyinenSijainti
         self.lentoasema_lista = lentoasemat.kohteet()
         self.mahdollisetKohteet = []
-    # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu
+    # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu testi
 
     def haeKentät(self):
         self.lentoasema_lista = lentoasemat.kohteet()

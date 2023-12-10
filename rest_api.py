@@ -55,7 +55,6 @@ def noppa():
             'polttoaine': game_instance.polttoaine
     }
     return jsonify(noppa), 200
-
 @app.route('/tankkaustiedot', methods=['GET'])
 def tankkaustiedot():
     game_instance.tankkaus()

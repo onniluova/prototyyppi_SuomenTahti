@@ -4,7 +4,7 @@ def etsiMahdollisetKohteet(nykyinenSijainti, polttoaine, lentoasema_lista):
     mahdollisetKohteet = []
 
     if isinstance(nykyinenSijainti, str):
-        nykyinenSijainti = lentoasema_lista.get(nykyinenSijainti)
+        nykyinenSijainti = lentoasema_lista.get(nykyinenSijainti) # Muutetaan nykyinen sijainti lentoasema objektiksi.
 
     for key in lentoasema_lista:  # Looppi käy läpi lentoasema sanakirjan ja lisää tiedot kenttä muuttujaan.
         kenttä = lentoasema_lista[key]
