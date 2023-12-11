@@ -27,7 +27,6 @@ async function statusData() {
     return status
 }
 
-
 async function tankkaus() {
     try {
         const status = await getData('http://127.0.0.1:5000/tankkaustiedot');
@@ -95,7 +94,6 @@ async function haeMahdolliset() {
         console.log(error);
     }
 }
-
 
 // Function to handle "siirry" button click
 async function onSiirryButtonClick() {
