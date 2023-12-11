@@ -27,8 +27,11 @@ async function statusData() {
     }
     return status
 }
+
+// Pää funktio
 async function gameSetup() {
     try {
+        const start = await getData('http://127.0.0.1:5000/luoPeli');
         const gameData = await getData('http://127.0.0.1:5000/haeKentat');
 
         for (let airport in gameData){
