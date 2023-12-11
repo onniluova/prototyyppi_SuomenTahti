@@ -17,6 +17,8 @@ async function getData(url) {
 async function statusData() {
     const status = await getData('http://127.0.0.1:5000/getStatus');
     console.log(status.nykyinenSijainti)
+    let sijainti = status.nykyinenSijainti
+    console.log(status)
     return status
 }
 
@@ -24,12 +26,14 @@ async function gameSetup() {
     try {
         const gameData = await getData('http://127.0.0.1:5000/haeKentat');
 
+
         for (let airport in gameData){
             console.log(gameData[airport])
             const { nimi, latitude, longitude } = gameData[airport];
             //console.log(`Airport: ${nimi}, Latitude: ${latitude}, Longitude: ${longitude}`)
             const marker = L.marker([latitude, longitude]).addTo(map)
             marker.bindPopup(`${nimi}`)
+
         }
     }catch (error) {
         console.log(error)
