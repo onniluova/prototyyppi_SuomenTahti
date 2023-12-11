@@ -28,24 +28,48 @@ async function statusData() {
     return status
 }
 
+let selectedAirportId = null;
+
 // Pää funktio
 async function gameSetup() {
     try {
         const start = await getData('http://127.0.0.1:5000/luoPeli');
         const gameData = await getData('http://127.0.0.1:5000/haeKentat');
 
-        for (let airport in gameData){
-            console.log(gameData[airport])
-            const { nimi, latitude, longitude } = gameData[airport];
-            //console.log(`Airport: ${nimi}, Latitude: ${latitude}, Longitude: ${longitude}`)
-            const marker = L.marker([latitude, longitude]).addTo(map)
-            marker.bindPopup(`${nimi}`)
+        for (let airportId in gameData) {
+            const { nimi, latitude, longitude } = gameData[airportId];
+            const marker = L.marker([latitude, longitude]).addTo(map);
+            marker.bindPopup(`${nimi}`);
 
+            // Add click event listener to marker
+            marker.on('click', function() {
+                selectedAirportId = airportId;
+                // You can also update the UI to show the selected airport
+            });
         }
-    }catch (error) {
-        console.log(error)
+    } catch (error) {
+        console.log(error);
     }
 }
 
-gameSetup()
-statusData()
+// Function to handle "siirry" button click
+async function onSiirryButtonClick() {
+    if (selectedAirportId) {
+        try {
+            const newStatus = await getData(`http://127.0.0.1:5000/siirry/${selectedAirportId}`);
+            // Update the UI with the new game status
+            statusData();
+            alert(`You have arrived to ${newStatus.nykyinenSijainti}`);
+        } catch (error) {
+            console.error(error);
+        }
+    } else {
+        alert("Please select an airport first.");
+    }
+}
+
+// Attach the click event handler to the "siirry" button
+document.getElementById('siirryButton').addEventListener('click', onSiirryButtonClick);
+
+gameSetup();
+statusData();

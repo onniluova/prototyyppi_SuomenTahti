@@ -20,7 +20,7 @@ def getStatus():
         'polttoaine': game_instance.polttoaine,
         'ilmastopisteet': game_instance.ilmastopisteet,
         'kilometrit': game_instance.kilometrit,
-        'nykyinenSijainti': game_instance.nykyinenSijainti,
+        'nykyinenSijainti': game_instance.nykyinenSijainti.id,
     }
     return jsonify(status), 200
 @app.route('/haeKentat', methods=['GET'])
@@ -55,7 +55,7 @@ def siirry(airport_id):
         'polttoaine': game_instance.polttoaine,
         'ilmastopisteet': game_instance.ilmastopisteet,
         'kilometrit': game_instance.kilometrit,
-        'nykyinenSijainti': game_instance.nykyinenSijainti,
+        'nykyinenSijainti': game_instance.nykyinenSijainti.municipality,
     }
     return jsonify(status), 200
 

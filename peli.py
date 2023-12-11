@@ -6,13 +6,13 @@ import siirryKohteeseen
 import nopanHeittoFunktio
 import etsiMahdollisetKohteet
 class Peli:
-    def __init__(self, peliLoppu = 0, rahat = 500, polttoaine = 100, ilmastopisteet = 100, kilometrit = 0, nykyinenSijainti = "EFMA", lentoasema_lista = [], mahdollisetKohteet = []):
+    def __init__(self, peliLoppu = 0, rahat = 500, polttoaine = 100, ilmastopisteet = 100, kilometrit = 0, lentoasema_lista = [], mahdollisetKohteet = [], nykyinenSijainti = []):
         self.peliLoppu = peliLoppu
         self.rahat = rahat
         self.polttoaine = polttoaine
         self.ilmastopisteet = ilmastopisteet
         self.kilometrit = kilometrit
-        self.nykyinenSijainti = nykyinenSijainti
+        self.nykyinenSijainti = lentoasemat.kohteet()['EFMA']
         self.lentoasema_lista = lentoasemat.kohteet()
         self.mahdollisetKohteet = []
     # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu testi
@@ -25,8 +25,8 @@ class Peli:
         self.mahdollisetKohteet = etsiMahdollisetKohteet.etsiMahdollisetKohteet(self.nykyinenSijainti, self.polttoaine, self.lentoasema_lista)
         return self.mahdollisetKohteet
 
-    def siirryKohteeseen(self):
-        self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista = siirryKohteeseen.siirryKohteesesen(self.polttoaine, self.kilometrit, self.nykyinenSijainti, self.lentoasema_lista)
+    def siirryKohteeseen(self, airport_id):
+        self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista = siirryKohteeseen.siirryKohteesesen(self.polttoaine, self.kilometrit, self.nykyinenSijainti, self.lentoasema_lista, airport_id)
         self.mahdollisetKohteet.clear() # Tyhjennetään lista.
         self.ilmastopisteet -= 10
         return self.polttoaine, self.nykyinenSijainti, self.kilometrit, self.lentoasema_lista
