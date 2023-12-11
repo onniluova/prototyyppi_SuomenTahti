@@ -16,13 +16,12 @@ async function getData(url) {
 async function statusData() {
     try {
         const status = await getData('http://127.0.0.1:5000/getStatus');
-        document.getElementById('money').textContent = `$${status.rahat}`;
+        document.getElementById('money').textContent = `$ ${status.rahat}`;
         document.getElementById('fuel').textContent = `${status.polttoaine}%`;
-        document.getElementById(
-            'climate-points').textContent = status.ilmastopisteet;
-        console.log(status.nykyinenSijainti)
-        let sijainti = status.nykyinenSijainti
-        console.log(status)
+        document.getElementById('climate-points').textContent = status.ilmastopisteet;
+        document.getElementById('current-location').textContent = status.nykyinenSijainti
+
+
     }catch (error) {
         console.error(error)
     }
