@@ -1,8 +1,9 @@
 from flask import Flask, jsonify
+from flask_cors import CORS  # Import the CORS library
 import peli
 
 app = Flask(__name__)
-
+CORS(app)
 # Tehdään peli instanssi
 game_instance = None
 
