@@ -14,16 +14,23 @@ async function getData(url) {
     return data
 }
 async function statusData() {
-    const status = await getData('http://127.0.0.1:5000/getStatus');
-    console.log(status.nykyinenSijainti)
-    let sijainti = status.nykyinenSijainti
-    console.log(status)
+    try {
+        const status = await getData('http://127.0.0.1:5000/getStatus');
+        document.getElementById('money').textContent = `$${status.rahat}`;
+        document.getElementById('fuel').textContent = `${status.polttoaine}%`;
+        document.getElementById(
+            'climate-points').textContent = status.ilmastopisteet;
+        console.log(status.nykyinenSijainti)
+        let sijainti = status.nykyinenSijainti
+        console.log(status)
+    }catch (error) {
+        console.error(error)
+    }
     return status
 }
 async function gameSetup() {
     try {
         const gameData = await getData('http://127.0.0.1:5000/haeKentat');
-
 
         for (let airport in gameData){
             console.log(gameData[airport])
@@ -37,7 +44,6 @@ async function gameSetup() {
         console.log(error)
     }
 }
-
 
 gameSetup()
 statusData()
