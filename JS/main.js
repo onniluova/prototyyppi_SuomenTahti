@@ -21,12 +21,36 @@ async function statusData() {
         document.getElementById('climate-points').textContent = status.ilmastopisteet;
         document.getElementById('current-location').textContent = status.nykyinenSijainti
 
-
     }catch (error) {
         console.error(error)
     }
     return status
 }
+
+
+async function tankkaus() {
+    try {
+        const status = await getData('http://127.0.0.1:5000/tankkaustiedot');
+        document.getElementById('money').textContent = `$ ${status.rahat}`;
+        document.getElementById('fuel').textContent = `${status.polttoaine}%`;
+        document.getElementById('climate-points').textContent = status.ilmastopisteet;
+        haeMahdolliset()
+    } catch (error) {
+        console.error(error);
+    }
+    // No need to return status if you're not using it after calling tankkaus
+}
+
+// Ensure your DOM is loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('tankkausButton').addEventListener('click', async function() {
+        await tankkaus();
+    });
+});
+
+document.getElementById('tankkausButton').addEventListener('click', async function() {
+    await tankkaus();
+});
 
 let selectedAirportId = null;
 
@@ -34,7 +58,7 @@ let selectedAirportId = null;
 async function gameSetup() {
     try {
         const start = await getData('http://127.0.0.1:5000/luoPeli');
-        const gameData = await getData('http://127.0.0.1:5000/haeKentat');
+        const gameData = await getData('http://127.0.0.1:5000/haeMahdolliset');
 
         for (let airportId in gameData) {
             const { nimi, latitude, longitude } = gameData[airportId];
@@ -52,6 +76,27 @@ async function gameSetup() {
     }
 }
 
+async function haeMahdolliset() {
+    try {
+        const gameData = await getData('http://127.0.0.1:5000/haeMahdolliset');
+
+        for (let airportId in gameData) {
+            const { nimi, latitude, longitude } = gameData[airportId];
+            const marker = L.marker([latitude, longitude]).addTo(map);
+            marker.bindPopup(`${nimi}`);
+
+            // Add click event listener to marker
+            marker.on('click', function() {
+                selectedAirportId = airportId;
+                // You can also update the UI to show the selected airport
+            });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 // Function to handle "siirry" button click
 async function onSiirryButtonClick() {
     if (selectedAirportId) {
@@ -59,7 +104,9 @@ async function onSiirryButtonClick() {
             const newStatus = await getData(`http://127.0.0.1:5000/siirry/${selectedAirportId}`);
             // Update the UI with the new game status
             statusData();
-            alert(`You have arrived to ${newStatus.nykyinenSijainti}`);
+            haeMahdolliset();
+
+            alert(`You have arrived in ${newStatus.nykyinenSijainti}`);
         } catch (error) {
             console.error(error);
         }
