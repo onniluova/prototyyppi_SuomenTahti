@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Läpi Suomen maan</title>
-    <link  href="css1.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css1.css" rel="stylesheet">
     <script src="/JS/main.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,33 +13,56 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-
-
+    <title>Läpi Suomen Maan</title>
 </head>
 <body>
-
-<div class ="container">
     <header>
-        <h1> Läpi Suomen maan</h1>
+        <h1>Läpi Suomen Maan</h1>
+        <button>Game</button>
+        <button>About</button>
     </header>
+
     <main>
-        <div id ="map">
-
+        <div id="map">
 
         </div>
-        <div class ="näyttö">
-            <p>näyttö</p>
-        <div class ="valinnat">
-            <button> Valinta 1</button>
-            <button> valinta 2</button>
-            <button> valinta 3</button>
-        </div>
+
+        <div id="right-box">
+            <div class="box">
+                <p>Game Status</p>
+                <table border="0">
+                        <tr>
+                            <td colspan="1">
+                                <h3 id="player-name">Player Name:</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Money: <span id="money">$500</span></td>
+                        <tr/>
+                            <td>Fuel: <span id="fuel">100%</span></td>
+                        <tr>
+                            <td>Climate Points: <span id="climate-points">100</span></td>
+                        </tr>
+                    </table>
+            </div>
+
+            <div class="box">
+                <p>Valinnat</p>
+                <button>Tankkaus</button>
+                <button>Jotain</button>
+                <button>Siirry</button>
+            </div>
+
+             <div id="info-box">
+                <p>Info tulee tähän</p>
+            </div>
+
+
         </div>
     </main>
-</div>
 
-
-
-
+    <footer>
+        <p>&copy; peli</p>
+    </footer>
 </body>
 </html>

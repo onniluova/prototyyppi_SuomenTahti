@@ -13,7 +13,6 @@ async function getData(url) {
     const data = await response.json();
     return data
 }
-
 async function statusData() {
     const status = await getData('http://127.0.0.1:5000/getStatus');
     console.log(status.nykyinenSijainti)
@@ -21,7 +20,6 @@ async function statusData() {
     console.log(status)
     return status
 }
-
 async function gameSetup() {
     try {
         const gameData = await getData('http://127.0.0.1:5000/haeKentat');
