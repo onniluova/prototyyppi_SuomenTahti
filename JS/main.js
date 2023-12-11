@@ -14,6 +14,12 @@ async function getData(url) {
     return data
 }
 
+async function statusData() {
+    const status = await getData('http://127.0.0.1:5000/getStatus');
+    console.log(status.nykyinenSijainti)
+    return status
+}
+
 async function gameSetup() {
     try {
         const gameData = await getData('http://127.0.0.1:5000/haeKentat');
@@ -32,3 +38,4 @@ async function gameSetup() {
 
 
 gameSetup()
+statusData()
