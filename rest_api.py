@@ -65,7 +65,8 @@ def noppa():
     noppa = {
             'rahat': game_instance.rahat,
             'ilmastopisteet': game_instance.ilmastopisteet,
-            'polttoaine': game_instance.polttoaine
+            'polttoaine': game_instance.polttoaine,
+            'message': game_instance.message,
     }
     return jsonify(noppa), 200
 @app.route('/tankkaustiedot', methods=['GET'])

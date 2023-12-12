@@ -6,7 +6,7 @@ import siirryKohteeseen
 import nopanHeittoFunktio
 import etsiMahdollisetKohteet
 class Peli:
-    def __init__(self, peliLoppu = 0, rahat = 500, polttoaine = 100, ilmastopisteet = 100, kilometrit = 0, lentoasema_lista = [], mahdollisetKohteet = [], nykyinenSijainti = []):
+    def __init__(self, message = "", peliLoppu = 0, rahat = 500, polttoaine = 100, ilmastopisteet = 100, kilometrit = 0, lentoasema_lista = [], mahdollisetKohteet = [], nykyinenSijainti = []):
         self.peliLoppu = peliLoppu
         self.rahat = rahat
         self.polttoaine = polttoaine
@@ -15,6 +15,7 @@ class Peli:
         self.nykyinenSijainti = lentoasemat.kohteet()['EFMA']
         self.lentoasema_lista = lentoasemat.kohteet()
         self.mahdollisetKohteet = []
+        self.message = message
     # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu testi
 
     def haeKentät(self):
@@ -33,8 +34,9 @@ class Peli:
 
     def heitaNoppaa(self):
         noppa = nopanHeittoFunktio.Noppa()
-        self.rahat, self.ilmastopisteet, self.polttoaine = noppa.nopanHeitto(self.rahat, self.ilmastopisteet, self.polttoaine)
-        return self.rahat, self.ilmastopisteet, self.polttoaine
+        message = ""
+        self.rahat, self.ilmastopisteet, self.polttoaine, self.message = noppa.nopanHeitto(self.rahat, self.ilmastopisteet, self.polttoaine, self.message)
+        return self.rahat, self.ilmastopisteet, self.polttoaine, self.message
 
     def tankkaus(self):
         if (self.rahat >= 100 - self.polttoaine):

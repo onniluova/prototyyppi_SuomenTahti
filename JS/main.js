@@ -97,6 +97,19 @@ async function haeMahdolliset() {
     }
 }
 
+async function noppa() {
+    try {
+        const status = await getData('http://127.0.0.1:5000/noppa');
+        document.getElementById('money').textContent = `$ ${status.rahat}`;
+        document.getElementById('fuel').textContent = `${status.polttoaine}%`;
+        document.getElementById(
+            'climate-points').textContent = status.ilmastopisteet;
+        alert(status.message);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 // Funktio siirtyy lentokentälle
 async function onSiirryButtonClick() {
     if (selectedAirportId) {
@@ -107,6 +120,7 @@ async function onSiirryButtonClick() {
             await haeMahdolliset();
 
             alert(`You have arrived in ${newStatus.nykyinenSijainti}`);
+            await noppa();
             await tarkistaLentokenttä(newStatus.nykyinenSijainti);
         } catch (error) {
             console.error(error);
