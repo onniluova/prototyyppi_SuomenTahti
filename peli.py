@@ -5,6 +5,7 @@ import etäisyys
 import siirryKohteeseen
 import nopanHeittoFunktio
 import etsiMahdollisetKohteet
+import api
 class Peli:
     def __init__(self, message = "", peliLoppu = 0, rahat = 500, polttoaine = 100, ilmastopisteet = 100, kilometrit = 0, lentoasema_lista = [], mahdollisetKohteet = [], nykyinenSijainti = []):
         self.peliLoppu = peliLoppu
@@ -17,6 +18,10 @@ class Peli:
         self.mahdollisetKohteet = []
         self.message = message
     # laittakaa alustukset konstruktoriin niin on selkeää mitä objektin luonnissa tapahtuu testi
+
+    def palautaSäänTiedot(self, airport_id):
+        self.sää = api.palautaKaikkiSääKohteesta(self.lentoasema_lista[airport_id].municipality)
+        return self.sää
 
     def haeKentät(self):
         self.lentoasema_lista = lentoasemat.kohteet()

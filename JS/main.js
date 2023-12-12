@@ -89,6 +89,7 @@ async function haeMahdolliset() {
             // Add click event listener to marker
             marker.on('click', function() {
                 selectedAirportId = airportId;
+                haeSää(selectedAirportId);
                 // You can also update the UI to show the selected airport
             });
         }
@@ -130,6 +131,16 @@ async function onSiirryButtonClick() {
     }
 }
 
+async function haeSää(airportId) {
+    try {
+        const weatherStatus = await getData(`http://127.0.0.1:5000/haeSaatiedot/${airportId}`);
+        document.getElementById('weather-info').textContent = `Weather: ${weatherStatus.description}, Temp: ${weatherStatus.temperature.toFixed(1)}°C`;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
 // Funktio tarkistaa onko lentokenttä Rovaniemellä
 async function tarkistaLentokenttä(nykyinenSijainti) {
     if (nykyinenSijainti === "Rovaniemi") {
@@ -146,3 +157,4 @@ document.getElementById('siirryButton').addEventListener('click', onSiirryButton
 
 gameSetup();
 statusData();
+haeSää("EFMA");

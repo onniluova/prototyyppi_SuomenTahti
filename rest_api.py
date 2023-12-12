@@ -23,6 +23,12 @@ def getStatus():
         'nykyinenSijainti': game_instance.nykyinenSijainti.id,
     }
     return jsonify(status), 200
+
+@app.route('/haeSaatiedot/<airport_id>', methods=['GET'])
+def haeSaatiedot(airport_id):
+    sää = game_instance.palautaSäänTiedot(airport_id)
+    return jsonify(sää), 200
+
 @app.route('/haeKentat', methods=['GET'])
 def haeKentat():
     game_instance.haeKentät()
