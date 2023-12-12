@@ -1,4 +1,6 @@
 'use strict'
+
+// Alustetaan kartta
 const map = L.map('map', { click: false });
 L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
   maxZoom: 20,
@@ -6,12 +8,15 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 }).addTo(map);
 map.setView([63, 24], 5.5);
 
+// Funktio joka hakee datan
 async function getData(url) {
     const response = await fetch(url);
     if(!response.ok) throw new Error('invalid server input');
     const data = await response.json();
     return data
 }
+
+// Funktio joka hakee status datan
 async function statusData() {
     try {
         const status = await getData('http://127.0.0.1:5000/getStatus');
@@ -26,34 +31,30 @@ async function statusData() {
     return status
 }
 
+// Funktio joka tankkaa
 async function tankkaus() {
     try {
         const status = await getData('http://127.0.0.1:5000/tankkaustiedot');
         document.getElementById('money').textContent = `$ ${status.rahat}`;
         document.getElementById('fuel').textContent = `${status.polttoaine}%`;
         document.getElementById('climate-points').textContent = status.ilmastopisteet;
-        await haeMahdolliset()
+        await haeMahdolliset();
         alert("Tankkaus valmis.");
     } catch (error) {
         console.error(error);
     }
-    // No need to return status if you're not using it after calling tankkaus
 }
 
-// Ensure your DOM is loaded before attaching event listeners
+// Funktio lisää tankkaus napille event listenerin
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('tankkausButton').addEventListener('click', async function() {
         await tankkaus();
     });
 });
 
-document.getElementById('tankkausButton').addEventListener('click', async function() {
-    await tankkaus();
-});
-
 let selectedAirportId = null;
 
-// Pää funktio
+// Funktio luo pelin
 async function gameSetup() {
     try {
         const start = await getData('http://127.0.0.1:5000/luoPeli');
@@ -75,6 +76,7 @@ async function gameSetup() {
     }
 }
 
+// Funktio hakee mahdolliset lentokentät
 async function haeMahdolliset() {
     try {
         const gameData = await getData('http://127.0.0.1:5000/haeMahdolliset');
@@ -95,7 +97,7 @@ async function haeMahdolliset() {
     }
 }
 
-// Function to handle "siirry" button click
+// Funktio siirtyy lentokentälle
 async function onSiirryButtonClick() {
     if (selectedAirportId) {
         try {
@@ -114,6 +116,7 @@ async function onSiirryButtonClick() {
     }
 }
 
+// Funktio tarkistaa onko lentokenttä Rovaniemellä
 async function tarkistaLentokenttä(nykyinenSijainti) {
     if (nykyinenSijainti === "Rovaniemi") {
         const status = await getData('http://127.0.0.1:5000/getStatus');
@@ -124,7 +127,7 @@ async function tarkistaLentokenttä(nykyinenSijainti) {
     }
 }
 
-// Attach the click event handler to the "siirry" button
+// Funktio lisää siirry napille event listenerin
 document.getElementById('siirryButton').addEventListener('click', onSiirryButtonClick);
 
 gameSetup();
