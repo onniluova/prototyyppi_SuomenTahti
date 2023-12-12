@@ -6,7 +6,6 @@ L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 }).addTo(map);
 map.setView([63, 24], 5.5);
 
-
 async function getData(url) {
     const response = await fetch(url);
     if(!response.ok) throw new Error('invalid server input');
@@ -33,7 +32,8 @@ async function tankkaus() {
         document.getElementById('money').textContent = `$ ${status.rahat}`;
         document.getElementById('fuel').textContent = `${status.polttoaine}%`;
         document.getElementById('climate-points').textContent = status.ilmastopisteet;
-        haeMahdolliset()
+        await haeMahdolliset()
+        alert("Tankkaus valmis.");
     } catch (error) {
         console.error(error);
     }
@@ -101,15 +101,26 @@ async function onSiirryButtonClick() {
         try {
             const newStatus = await getData(`http://127.0.0.1:5000/siirry/${selectedAirportId}`);
             // Update the UI with the new game status
-            statusData();
-            haeMahdolliset();
+            await statusData();
+            await haeMahdolliset();
 
             alert(`You have arrived in ${newStatus.nykyinenSijainti}`);
+            await tarkistaLentokenttä(newStatus.nykyinenSijainti);
         } catch (error) {
             console.error(error);
         }
     } else {
         alert("Please select an airport first.");
+    }
+}
+
+async function tarkistaLentokenttä(nykyinenSijainti) {
+    if (nykyinenSijainti === "Rovaniemi") {
+        const status = await getData('http://127.0.0.1:5000/getStatus');
+        document.getElementById('climate-points').textContent = status.ilmastopisteet;
+
+        alert("You have arrived in Rovaniemi! Congratulations!" + "\n" +
+            "Ilmastopisteesi: " + status.ilmastopisteet);
     }
 }
 
