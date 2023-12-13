@@ -20,10 +20,11 @@ async function getData(url) {
 async function statusData() {
     try {
         const status = await getData('http://127.0.0.1:5000/getStatus');
-        document.getElementById('money').textContent = `$ ${status.rahat}`;
-        document.getElementById('fuel').textContent = `${status.polttoaine}%`;
+        document.getElementById('money').textContent = `$ ${Math.floor(status.rahat)}`;
+        document.getElementById('fuel').textContent = `${status.polttoaine.toFixed(2)}%`;
         document.getElementById('climate-points').textContent = status.ilmastopisteet;
-        document.getElementById('current-location').textContent = status.nykyinenSijainti
+        document.getElementById('current-location').textContent = status.nykyinenSijainti;
+        document.getElementById('kilometers').textContent = status.kilometrit.toFixed(2);
 
     }catch (error) {
         console.error(error)
@@ -35,7 +36,7 @@ async function statusData() {
 async function tankkaus() {
     try {
         const status = await getData('http://127.0.0.1:5000/tankkaustiedot');
-        document.getElementById('money').textContent = `$ ${status.rahat}`;
+        document.getElementById('money').textContent = `$ ${Math.floor(status.rahat)}`;
         document.getElementById('fuel').textContent = `${status.polttoaine}%`;
         document.getElementById('climate-points').textContent = status.ilmastopisteet;
         await haeMahdolliset();
@@ -101,10 +102,9 @@ async function haeMahdolliset() {
 async function noppa() {
     try {
         const status = await getData('http://127.0.0.1:5000/noppa');
-        document.getElementById('money').textContent = `$ ${status.rahat}`;
+        document.getElementById('money').textContent = `$ ${Math.floor(status.rahat)}`;
         document.getElementById('fuel').textContent = `${status.polttoaine}%`;
-        document.getElementById(
-            'climate-points').textContent = status.ilmastopisteet;
+        document.getElementById('climate-points').textContent = status.ilmastopisteet;
         alert(status.message);
     } catch (error) {
         console.error(error);
