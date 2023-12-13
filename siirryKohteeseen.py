@@ -8,6 +8,6 @@ def siirryKohteesesen(polttoaine, kilometrit, nykyinenSijainti, lentoasema_lista
             kilometrit += etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key]) * 4
             etäisyysVälillä = etäisyys.etäisyysLasku(nykyinenSijainti, lentoasema_lista[key])  # Tehdään muuttuja etäisyydestä.
             polttoaine = etäisyys.polttoaineenVähennys(polttoaine, etäisyysVälillä, lentoasema_lista[key].municipality)  # Vähennetään polttoainetta
-            nykyinenSijainti = lentoasema_lista[key]  # Muutetaan kohdesijainti nykyiseksi sijainniksi.
+            nykyinenSijainti = lentoasema_lista[key]  # Muutetaan kohdesijainti nykyiseksi sijainniksi
 
     return polttoaine, nykyinenSijainti, kilometrit, lentoasema_lista
